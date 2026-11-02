@@ -182,6 +182,14 @@ select{font:600 15px Figtree,sans-serif;padding:7px 10px;border-radius:10px;bord
 .wnav{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
 .chipline{font-weight:700;color:var(--green);margin:0 0 6px}
 @media(max-width:560px){.sd span{display:none}.cards.two{grid-template-columns:1fr}}
+
+.card.lock{max-width:520px}.pass{margin:12px 0;padding:12px 16px;border-left:4px solid var(--blue);background:var(--bg);border-radius:0 10px 10px 0;font-size:15.5px}
+.mv{gap:8px}.mv .btn{margin-top:8px;align-self:flex-start}
+.orb{width:170px;height:170px;border-radius:50%;margin:30px auto 10px;background:var(--coral);opacity:.9;transition:transform var(--d,4s) ease-in-out}
+.orb.in,.orb.hi{transform:scale(1.5)}.orb.out,.orb.lo{transform:scale(.8)}
+.orb.move{animation:bounce .6s ease-in-out infinite alternate;background:var(--sun)}
+@keyframes bounce{to{transform:translateY(-24px) scale(1.08)}}
+@media(max-width:720px){.tabs-m a{letter-spacing:0;font-size:10px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -354,10 +362,13 @@ function currentIdx(){const i=LESSONS.findIndex(l=>!P.done[l.id]);return i<0?LES
 /* ---------- router ---------- */
 window.addEventListener('hashchange',route);
 function route(){
+  if(BT){clearInterval(BT);BT=null}
   document.documentElement.lang=({en:'en',es:'es',zh:'zh'})[L()];
   if(!SESS||!P){renderAuth();return}
   const h=location.hash.replace('#/','')||'learn';
   if(h.startsWith('lesson/'))return startLesson(h.slice(7));
+  if(h==='practice')return renderPractice();
+  if(h==='move')return renderMove();
   if(h==='mind')return renderMind();
   if(h==='plans')return renderPlans();
   if(h==='me')return renderMe();
@@ -378,7 +389,7 @@ function renderAuth(){
     <div class="words" aria-hidden="true">${words.map(w=>`<span>${w[0]}<small>${w[1]}</small></span>`).join('')}</div></section>
   <section class="try" id="try"><div class="trywrap"><span class="plus">${U.tryBadge}</span><h2>${U.wzH}</h2><p class="sub">${U.wzS}</p><div class="wizard" id="wz" aria-live="polite"></div></div></section>
   <section class="join" id="join"><div class="form"><div id="fm"></div></div></section>
-  <footer class="lf"><a href="about.html">${U.about}</a></footer></div>`;
+  <footer class="lf">${T2(X('Educational use only. Not medical advice.','Solo con fines educativos. No es consejo médico.','仅供教育用途，不构成医疗建议。'),l)}</footer></div>`;
   $('#al').value=l;
   $('#al').onchange=e=>{store.set('lg:lang',e.target.value);W.qs=null;W.i=0;W.xp=0;W.sel=null;W.done=false;renderAuth()};
   $('#htry').onclick=()=>$('#try').scrollIntoView({behavior:'smooth'});
@@ -463,7 +474,7 @@ function statsHTML(){
   return `<div class="stats"><span class="stat s" title="${t('streak')}">🔥 ${curStreak()}</span><span class="stat x" title="XP">⚡ ${P.xp}</span><span class="stat h" title="Hearts">❤ ${isPlus()?'∞':3}</span></div>`;
 }
 function shell(active,inner){
-  const nav=[['learn','🏠',t('learn')],['mind','🧠',t('mind')],['plans','⭐',t('plans')],['me','👤',t('me')]];
+  const nav=[['learn','🏠',t('learn')],['practice','🎯',T(X('Practice','Práctica','练习'))],['move','🤸',T(X('Move','Mover','活动'))],['mind','🧠',t('mind')],['plans','⭐',t('plans')],['me','👤',t('me')]];
   const goalDone=P.last===day();
   app.innerHTML=`<div class="shell">
    <aside class="side"><a class="logo" href="#/learn">Learn<b>ology</b></a><nav class="nav" aria-label="Main">${nav.map(n=>`<a href="#/${n[0]}" class="${active===n[0]?'on':''}"><i>${n[1]}</i>${n[2]}</a>`).join('')}</nav></aside>
@@ -584,9 +595,9 @@ function renderPlans(){
   shell('plans',`<div class="page"><h1>${t('plansT')}</h1><p class="sub">${t('plansS')}</p>
    <div class="moods" role="group"><button data-b="monthly" aria-pressed="${bill==='monthly'}">${t('monthly')}</button><button data-b="yearly" aria-pressed="${bill==='yearly'}">${t('yearly')}</button></div>
    <div class="plans">
-    <div class="plan"><h3>${t('free')}</h3><div class="price">$0</div><ul><li>${t('f1')}</li><li>${t('f2')}</li><li>${t('f3')}</li></ul>
+    <div class="plan"><h3>${t('free')}</h3><div class="price">$0</div><ul><li>${t('f1')}</li><li>${t('f2')}</li><li>${t('f3')}</li><li>${T(X('Box-breathing guide','Guía de respiración en caja','方块呼吸引导'))}</li></ul>
       <button class="btn ghost" disabled>${isPlus()?t('free'):t('cur')}</button></div>
-    <div class="plan best" data-badge="${t('bestv')}"><h3>${t('plus')}</h3><div class="price">${price[0]}<small>${price[1]}</small></div><ul><li>${t('p1')}</li><li>${t('p2')}</li><li>${t('p3')}</li><li>${t('p4')}</li></ul>
+    <div class="plan best" data-badge="${t('bestv')}"><h3>${t('plus')}</h3><div class="price">${price[0]}<small>${price[1]}</small></div><ul><li>${t('p1')}</li><li>${t('p2')}</li><li>${t('p3')}</li><li>${t('p4')}</li><li>${T(X('MCAT practice sets with explanations','Series de práctica MCAT con explicaciones','带解析的 MCAT 练习题组'))}</li><li>${T(X('Guided movement breaks for kids and adults','Pausas de movimiento guiadas para niños y adultos','适合儿童和成人的引导式活动'))}</li></ul>
       ${isPlus()?`<button class="btn ghost" id="cancel">${t('manage')}</button>`:`<button class="btn coral" id="up">${t('upgrade')}</button>`}</div>
     <div class="plan"><h3>${t('school')}</h3><div class="price" style="font-size:28px">Custom</div><ul><li>${t('s1')}</li><li>${t('s2')}</li><li>${t('s3')}</li></ul>
       <a class="btn ghost" href="mailto:hello@learnology.example">${t('contact')}</a></div>
@@ -613,11 +624,77 @@ function renderMe(){
     <div class="row"><span>${t('lang')}</span><select id="pl"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></div>
    </div>
    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn ghost" id="so">${t('signout')}</button><button class="btn ghost" id="rs">${t('reset')}</button></div>
-   <p class="note"><a href="about.html">${t('about')}</a></p></div>`);
+   </div>`);
   $('#pl').value=P.lang;
   $('#pl').onchange=e=>{P.lang=e.target.value;store.set('lg:lang',P.lang);save();route()};
   $('#so').onclick=()=>{store.set('lg:session',null);SESS=null;P=null;location.hash='';route()};
   $('#rs').onclick=()=>{if(confirm(t('resetQ'))){P.xp=0;P.streak=0;P.last='';P.done={};save();location.hash='#/learn';route()}};
+}
+
+/* ---------- practice (MCAT) + move ---------- */
+const X=(en,es,zh)=>({en,es,zh});
+const MCAT={
+ bio:{n:X("Bio & Biochem","Bio y Bioquímica","生物与生化"),qs:[
+  {q:"Which organelle is the main site of ATP production through oxidative phosphorylation?",o:["Golgi apparatus","Mitochondrion","Smooth endoplasmic reticulum"],a:1,e:"The electron transport chain sits on the inner mitochondrial membrane and drives ATP synthase."},
+  {q:"A competitive inhibitor of an enzyme will...",o:["Increase apparent Km and leave Vmax unchanged","Decrease Vmax and leave Km unchanged","Decrease both Km and Vmax"],a:0,e:"Substrate can outcompete a competitive inhibitor, so Vmax is unchanged, but more substrate is needed to reach half Vmax, so Km rises."},
+  {q:"Which nitrogenous base is found in RNA but not in DNA?",o:["Thymine","Uracil","Adenine"],a:1,e:"RNA uses uracil in place of thymine."}]},
+ chem:{n:X("Chem & Phys","Química y Física","化学与物理"),qs:[
+  {q:"A solution has a pH of 3. What is its hydrogen ion concentration?",o:["1 × 10⁻³ M","1 × 10⁻¹¹ M","3 M"],a:0,e:"pH = −log[H⁺], so [H⁺] = 10⁻³ M."},
+  {q:"A fixed amount of ideal gas at constant temperature has its volume halved. Its pressure...",o:["Halves","Doubles","Stays the same"],a:1,e:"Boyle's law: P × V is constant at constant temperature."},
+  {q:"Which compound has the highest boiling point?",o:["Methane (CH₄)","Dimethyl ether (CH₃OCH₃)","Ethanol (CH₃CH₂OH)"],a:2,e:"Ethanol hydrogen-bonds with itself, which takes the most energy to overcome."}]},
+ psy:{n:X("Psych & Soc","Psicología y Sociología","心理与社会"),qs:[
+  {q:"Repeatedly pairing a neutral stimulus with an unconditioned stimulus until the neutral one triggers a response is...",o:["Operant conditioning","Classical conditioning","Observational learning"],a:1,e:"That is Pavlov's classical conditioning."},
+  {q:"Overemphasizing personality and underestimating the situation when explaining someone else's behavior is the...",o:["Fundamental attribution error","Confirmation bias","Halo effect"],a:0,e:"The fundamental attribution error favors dispositional explanations for other people's actions."},
+  {q:"Which brain structure is most associated with forming new explicit memories?",o:["Cerebellum","Amygdala","Hippocampus"],a:2,e:"The hippocampus consolidates explicit (declarative) memories."}]},
+ cars:{n:X("Critical reading (CARS)","Lectura crítica (CARS)","批判性阅读 (CARS)"),p:"Public health campaigns often succeed not because they inform people, but because they make the healthy choice the easy one. Clean tap water, fluoride in toothpaste and seat belts all work with little ongoing effort from the individual.",qs:[
+  {q:"Which statement best captures the author's main point?",o:["Information alone changes behavior less reliably than convenient design","People deliberately ignore health information","Seat belts are the most important health tool"],a:0,e:"The author contrasts informing people with making healthy choices easy."},
+  {q:"Which finding would most weaken the passage's claim?",o:["Water quality varies between cities","Education-only campaigns changed behavior as reliably as design changes","Seat belts reduce injuries"],a:1,e:"Equal success from education alone would undercut the claim that design works better."},
+  {q:"The author would most likely agree that...",o:["Individuals should not take any responsibility for health","Education campaigns are always harmful","Making the healthy option the default can improve outcomes at scale"],a:2,e:"This follows directly from the examples of water, fluoride and seat belts."}]}
+};
+let PR=null;
+function lockCard(title,desc){return `<div class="card lock"><h3>🔒 ${title} <span class="plus">Plus</span></h3><p>${desc}</p><a class="btn sun" href="#/plans">${t('upgrade')}</a></div>`}
+function renderPractice(){
+  const head=`<div class="page"><h1>${T(X('MCAT practice','Práctica para el MCAT','MCAT 练习'))}</h1><p class="sub">${T(X('Short sets in the four MCAT areas, with explanations. Questions are in English, like the real exam.','Series cortas en las cuatro áreas del MCAT, con explicaciones. Las preguntas están en inglés, como en el examen real.','四个 MCAT 科目的短题组，附解析。题目为英文，与真实考试一致。'))}</p>`;
+  if(!isPlus()){shell('practice',head+lockCard(T(X('MCAT practice','Práctica MCAT','MCAT 练习')),T(X('Unlock 12 practice questions across Bio/Biochem, Chem/Phys, Psych/Soc and CARS.','Desbloquea 12 preguntas de práctica en Bio/Bioquímica, Química/Física, Psicología/Sociología y CARS.','解锁 12 道练习题，覆盖生物/生化、化学/物理、心理/社会和 CARS。')))+'</div>');return}
+  shell('practice',head+`<div class="cards">${Object.keys(MCAT).map(k=>`<button class="pick" data-s="${k}"><b>${T(MCAT[k].n)}</b><small>${MCAT[k].qs.length} ${T(X('questions','preguntas','题'))}</small></button>`).join('')}</div><div id="pq" style="margin-top:20px"></div></div>`);
+  document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{const s=MCAT[b.dataset.s];PR={k:b.dataset.s,i:0,score:0,sel:null,qs:s.qs.map(q=>{const ord=shuffle([0,1,2]);return {q:q.q,o:ord.map(i=>q.o[i]),a:ord.indexOf(q.a),e:q.e}})};drawPQ();$('#pq').scrollIntoView({behavior:'smooth'})});
+}
+function drawPQ(){
+  const box=$('#pq');if(!box||!PR)return;
+  const s=MCAT[PR.k];
+  if(PR.i>=PR.qs.length){const xp=PR.score*5;P.xp+=xp;save();box.innerHTML=`<div class="qcard"><div class="center2"><div style="font-size:48px">🎯</div><h3>${PR.score}/${PR.qs.length}</h3><p class="sub">⚡ +${xp} XP</p><button class="btn" id="pa">${T(X('Another set','Otra serie','再来一组'))}</button></div></div>`;$('#pa').onclick=()=>{PR=null;box.innerHTML='';window.scrollTo({top:0,behavior:'smooth'})};return}
+  const q=PR.qs[PR.i],shown=PR.sel!=null;
+  box.innerHTML=`<div class="qcard"><div class="qdots">${PR.qs.map((_,i)=>`<i class="${i<PR.i?'on':i===PR.i?'cur':''}"></i>`).join('')}</div>${s.p?`<blockquote class="pass">${esc(s.p)}</blockquote>`:''}<h3>${esc(q.q)}</h3><div class="opts">${q.o.map((o,i)=>`<button class="opt ${shown?(i===q.a?'right':i===PR.sel?'wrong':''):''}" data-i="${i}" ${shown?'disabled':''}><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>${shown?`<div class="qfb ${PR.sel===q.a?'ok':'bad'}"><b>${PR.sel===q.a?t('correct'):t('wrong')}</b> ${esc(q.e)}<div style="margin-top:12px"><button class="btn" id="pn">${t('next')}</button></div></div>`:''}</div>`;
+  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{PR.sel=+b.dataset.i;if(PR.sel===q.a)PR.score++;drawPQ()});
+  const n=$('#pn');if(n)n.onclick=()=>{PR.sel=null;PR.i++;drawPQ()};
+}
+/* movement breaks */
+let BT=null;
+const BREAKS={
+ breathe:{free:true,n:X('Box breathing','Respiración en caja','方块呼吸'),d:X('A calming 1-minute breathing guide. Good before a test or when anxious.','Una guía calmante de 1 minuto. Útil antes de un examen o con ansiedad.','1 分钟的平静呼吸引导，适合考前或焦虑时。'),
+  steps:[...Array(4)].flatMap(()=>[{c:'in',s:4,x:X('Breathe in','Inhala','吸气')},{c:'hi',s:4,x:X('Hold','Sostén','屏住')},{c:'out',s:4,x:X('Breathe out','Exhala','呼气')},{c:'lo',s:4,x:X('Hold','Sostén','屏住')}])},
+ wiggle:{n:X('Wiggle break','Pausa para moverse','活动一下'),d:X('A 90-second movement break for all ages: roll, reach, march and shake.','Una pausa de 90 segundos para todas las edades: rotar, estirar, marchar y sacudir.','适合各年龄的 90 秒活动：转肩、伸展、原地踏步、抖一抖。'),
+  steps:[{c:'move',s:20,x:X('Roll your shoulders','Rota los hombros','转动肩膀')},{c:'move',s:20,x:X('Reach up high, then touch your toes','Estírate arriba y toca los pies','向上伸展，再摸脚尖')},{c:'move',s:30,x:X('March in place','Marcha en el lugar','原地踏步')},{c:'move',s:20,x:X('Shake it all out!','¡Sacúdelo todo!','全身抖一抖！')}]},
+ pulse:{n:X('Heartbeat challenge','Reto del latido','心跳挑战'),d:X('Get your heart going, then learn to find and count your own pulse.','Activa tu corazón y aprende a encontrar y contar tu pulso.','让心跳加快，再学会找到并数自己的脉搏。'),
+  steps:[{c:'move',s:30,x:X('Jumping jacks!','¡Saltos de tijera!','开合跳！')},{c:'move',s:20,x:X('Slow march to cool down','Marcha lenta para enfriar','慢走放松')},{c:'lo',s:15,x:X('Two fingers on your wrist. Count beats for 15 seconds, then multiply by 4.','Dos dedos en la muñeca. Cuenta los latidos 15 segundos y multiplica por 4.','两根手指放在手腕上，数 15 秒心跳，再乘以 4。')}]}
+};
+function renderMove(){
+  shell('move',`<div class="page"><h1>${T(X('Move & breathe','Muévete y respira','活动与呼吸'))}</h1><p class="sub">${T(X('Short guided breaks, fun for kids and grown-ups. More videos are on the way.','Pausas guiadas cortas, divertidas para niños y adultos. Pronto habrá más videos.','简短的引导式活动，大人小孩都适合。更多视频即将上线。'))}</p>
+  <div class="cards">${Object.keys(BREAKS).map(k=>{const b=BREAKS[k],ok=b.free||isPlus(),sec=b.steps.reduce((a,s)=>a+s.s,0);return `<div class="pick mv"><b>${T(b.n)} ${b.free?'':'<span class="plus">Plus</span>'}</b><small>${T(b.d)}</small><small>${Math.round(sec/60*10)/10} min</small>${ok?`<button class="btn sm" data-b="${k}">${t('start')}</button>`:`<a class="btn sun sm" href="#/plans">🔒 ${t('upgrade')}</a>`}</div>`}).join('')}</div></div>`);
+  document.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>runBreak(b.dataset.b));
+}
+function runBreak(id){
+  const b=BREAKS[id],steps=b.steps,total=steps.reduce((a,s)=>a+s.s,0);let i=0,left=steps[0].s,elapsed=0;
+  app.innerHTML=`<div class="lesson"><div class="ltop"><button class="x" id="bx" aria-label="Close">×</button><div class="prog"><i id="bp"></i></div></div><div class="lbody"><div class="center"><div class="orb" id="orb"></div><h2 id="bt" style="margin:24px 0 8px"></h2><p class="sub" id="bs" style="font:800 40px Fraunces,serif"></p></div></div></div>`;
+  const paint=()=>{const s=steps[i];$('#orb').className='orb '+s.c;$('#orb').style.setProperty('--d',s.s+'s');$('#bt').textContent=T(s.x);$('#bs').textContent=left;$('#bp').style.width=Math.round(elapsed/total*100)+'%'};
+  const stop=()=>{clearInterval(BT);BT=null};
+  $('#bx').onclick=()=>{stop();location.hash='#/move';route()};
+  paint();
+  BT=setInterval(()=>{
+    left--;elapsed++;
+    if(left<=0){i++;if(i>=steps.length){stop();P.xp+=5;save();app.innerHTML=`<div class="lesson"><div class="lbody"><div class="center"><div style="font-size:64px">🌟</div><h1>${T(X('Nice work!','¡Buen trabajo!','做得好！'))}</h1><div class="big"><div><b>⚡ 5</b><small>${t('xp')}</small></div></div><button class="btn block" id="bd">${t('next')}</button></div></div></div>`;$('#bd').onclick=()=>{location.hash='#/move';route()};return}left=steps[i].s}
+    paint();
+  },1000);
 }
 
 /* ---------- boot ---------- */
