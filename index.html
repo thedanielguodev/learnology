@@ -166,6 +166,22 @@ select{font:600 15px Figtree,sans-serif;padding:7px 10px;border-radius:10px;bord
 .join .form{background:var(--card);border-radius:18px;padding:28px;max-width:420px}
 .lf{text-align:center;padding:24px;font-size:14px}.lf a{color:var(--muted)}
 @media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:24px}.pts{grid-template-columns:1fr}}
+
+.wizard{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px}
+.wizard h3{font-size:28px;margin:18px 0 4px}
+.steps{display:flex;align-items:center;gap:8px}
+.sd{display:flex;align-items:center;gap:8px;font:700 14px Figtree;color:var(--muted)}
+.sd b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--muted);font:800 14px Figtree}
+.sd.cur{color:var(--ink)}.sd.cur b{background:var(--coral);color:#fff}.sd.on b{background:var(--green);color:#fff}
+.sl{flex:1;height:3px;background:var(--line);border-radius:2px;min-width:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:14px}
+.cards.two{grid-template-columns:1fr 1fr}
+.pick{text-align:left;background:var(--bg);border:2px solid var(--line);border-bottom-width:5px;border-radius:14px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.pick b{font:700 20px Fraunces,serif}.pick small{color:var(--muted);font-size:14px;line-height:1.35}
+.pick:hover{border-color:var(--green)}.pick[aria-pressed=true]{border-color:var(--coral);background:color-mix(in srgb,var(--coral) 12%,var(--card))}
+.wnav{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.chipline{font-weight:700;color:var(--green);margin:0 0 6px}
+@media(max-width:560px){.sd span{display:none}.cards.two{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -196,7 +212,7 @@ en:{tag:"Learn the <em>language</em> of your own health.",sub:"Free, game-style 
  p1:"Everything in Free",p2:"Unlimited hearts",p3:"Streak freeze: one missed day won't reset your streak",p4:"Supporter badge",
  s1:"Group accounts for classrooms",s2:"Progress reports for teachers",s3:"Translated materials for patients",
  coT:"Demo checkout",coS:"No card is charged. This only switches Plus on for this device.",coOk:"Start Plus",coNo:"Cancel",
- lang:"Language",signout:"Sign out",reset:"Reset progress",resetQ:"Erase all lessons, XP and streak?",lessonsDone:"Lessons done",total:"Total XP",plan:"Plan",member:"Member since",about:"About Learnology",heroCta:"Try a 1-minute lesson",pt1:"Bite-size lessons, 2 minutes each",pt2:"English, Español and 中文",pt3:"Free to learn, with streaks and XP",tryH:"Try it before you sign up",tryS:"Three quick questions. Your XP carries over when you create a profile.",fin:"Finish",tryBadge:"Free · no signup",saveH:"Nice! Save your progress",saveS:"waiting for you. Create a free profile to keep it and unlock the full path.",saveBtn:"Save my XP and continue",tryMiss:"Good try, now you know. Create a free profile to keep learning."},
+ lang:"Language",signout:"Sign out",reset:"Reset progress",resetQ:"Erase all lessons, XP and streak?",lessonsDone:"Lessons done",total:"Total XP",plan:"Plan",member:"Member since",about:"About Learnology",heroCta2:"Start in 3 steps",wzH:"Set up your lessons in 3 steps",wzS:"Pick a language, a topic and a level, then try your first questions. Takes a minute.",st1:"Language",st2:"Topic & level",st3:"Try it",step1T:"Choose your language",step1S:"Lessons, questions and feedback all switch to it. You can change it later.",step2T:"Pick a topic and your level",topic:"What do you want to learn first?",levelT:"How much do you know already?",lvl1:"Beginner",lvl1d:"New to health words. Start from the basics.",lvl2:"Some experience",lvl2d:"I know the basics. Skip ahead and challenge me.",step3T:"Try it",back:"Back",cont:"Continue",heroCta:"Try a 1-minute lesson",pt1:"Bite-size lessons, 2 minutes each",pt2:"English, Español and 中文",pt3:"Free to learn, with streaks and XP",tryH:"Try it before you sign up",tryS:"Three quick questions. Your XP carries over when you create a profile.",fin:"Finish",tryBadge:"Free · no signup",saveH:"Nice! Save your progress",saveS:"waiting for you. Create a free profile to keep it and unlock the full path.",saveBtn:"Save my XP and continue",tryMiss:"Good try, now you know. Create a free profile to keep learning."},
 es:{tag:"Aprende el <em>idioma</em> de tu propia salud.",sub:"Lecciones gratis en forma de juego sobre el cuerpo, las visitas al médico, los medicamentos y la salud mental.",
  signin:"Iniciar sesión",signup:"Crea tu perfil",name:"Nombre",email:"Correo",pw:"Contraseña",go:"Empezar",login:"Entrar",have:"¿Ya tienes cuenta?",none:"¿Eres nuevo?",
  fine:"Las cuentas se guardan solo en este dispositivo. No reutilices una contraseña de otro sitio.",errAll:"Completa todos los campos.",errPw:"La contraseña necesita 6 o más caracteres.",errBad:"Correo o contraseña incorrectos.",errTaken:"Ese correo ya tiene cuenta. Inicia sesión.",
@@ -210,7 +226,7 @@ es:{tag:"Aprende el <em>idioma</em> de tu propia salud.",sub:"Lecciones gratis e
  p1:"Todo lo de Gratis",p2:"Corazones ilimitados",p3:"Congelar racha: un día perdido no la reinicia",p4:"Insignia de apoyo",
  s1:"Cuentas grupales para aulas",s2:"Informes de progreso para docentes",s3:"Materiales traducidos para pacientes",
  coT:"Pago de demostración",coS:"No se cobra ninguna tarjeta. Solo activa Plus en este dispositivo.",coOk:"Empezar Plus",coNo:"Cancelar",
- lang:"Idioma",signout:"Cerrar sesión",reset:"Reiniciar progreso",resetQ:"¿Borrar lecciones, XP y racha?",lessonsDone:"Lecciones hechas",total:"XP total",plan:"Plan",member:"Miembro desde",about:"Acerca de Learnology",heroCta:"Prueba una lección de 1 minuto",pt1:"Lecciones cortas de 2 minutos",pt2:"English, Español y 中文",pt3:"Gratis, con rachas y XP",tryH:"Pruébalo antes de registrarte",tryS:"Tres preguntas rápidas. Tu XP se conserva al crear tu perfil.",fin:"Terminar",tryBadge:"Gratis · sin registro",saveH:"¡Bien! Guarda tu progreso",saveS:"te esperan. Crea un perfil gratis para conservarlos y desbloquear todo el camino.",saveBtn:"Guardar mi XP y continuar",tryMiss:"Buen intento, ahora ya lo sabes. Crea un perfil gratis para seguir aprendiendo."},
+ lang:"Idioma",signout:"Cerrar sesión",reset:"Reiniciar progreso",resetQ:"¿Borrar lecciones, XP y racha?",lessonsDone:"Lecciones hechas",total:"XP total",plan:"Plan",member:"Miembro desde",about:"Acerca de Learnology",heroCta2:"Empieza en 3 pasos",wzH:"Prepara tus lecciones en 3 pasos",wzS:"Elige idioma, tema y nivel, y prueba tus primeras preguntas. Toma un minuto.",st1:"Idioma",st2:"Tema y nivel",st3:"Pruébalo",step1T:"Elige tu idioma",step1S:"Lecciones, preguntas y comentarios cambian a él. Puedes cambiarlo después.",step2T:"Elige un tema y tu nivel",topic:"¿Qué quieres aprender primero?",levelT:"¿Cuánto sabes ya?",lvl1:"Principiante",lvl1d:"Nuevo en palabras de salud. Empieza desde lo básico.",lvl2:"Con experiencia",lvl2d:"Sé lo básico. Sáltame lo inicial y ponme a prueba.",step3T:"Pruébalo",back:"Atrás",cont:"Continuar",heroCta:"Prueba una lección de 1 minuto",pt1:"Lecciones cortas de 2 minutos",pt2:"English, Español y 中文",pt3:"Gratis, con rachas y XP",tryH:"Pruébalo antes de registrarte",tryS:"Tres preguntas rápidas. Tu XP se conserva al crear tu perfil.",fin:"Terminar",tryBadge:"Gratis · sin registro",saveH:"¡Bien! Guarda tu progreso",saveS:"te esperan. Crea un perfil gratis para conservarlos y desbloquear todo el camino.",saveBtn:"Guardar mi XP y continuar",tryMiss:"Buen intento, ahora ya lo sabes. Crea un perfil gratis para seguir aprendiendo."},
 zh:{tag:"学会你自己<em>健康</em>的语言。",sub:"关于身体、看医生、药物和心理健康的免费游戏化小课程。",
  signin:"登录",signup:"创建你的资料",name:"姓名",email:"邮箱",pw:"密码",go:"开始",login:"登录",have:"已有账号？",none:"第一次来？",
  fine:"账号只保存在本设备上。请勿使用其他网站的密码。",errAll:"请填写所有内容。",errPw:"密码至少 6 个字符。",errBad:"邮箱或密码错误。",errTaken:"该邮箱已有账号，请登录。",
@@ -224,7 +240,7 @@ zh:{tag:"学会你自己<em>健康</em>的语言。",sub:"关于身体、看医�
  p1:"包含免费版全部内容",p2:"无限爱心",p3:"连续冻结：漏一天不会清零",p4:"支持者徽章",
  s1:"课堂团体账号",s2:"教师进度报告",s3:"为患者翻译的资料",
  coT:"演示结账",coS:"不会扣款。这只会在本设备上开启 Plus。",coOk:"开通 Plus",coNo:"取消",
- lang:"语言",signout:"退出登录",reset:"重置进度",resetQ:"清除所有课程、经验和连续记录？",lessonsDone:"已完成课程",total:"总经验",plan:"方案",member:"加入时间",about:"关于 Learnology",heroCta:"试试 1 分钟小课",pt1:"每节 2 分钟的小课程",pt2:"English、Español 和中文",pt3:"免费学习，有连续记录和经验",tryH:"注册前先试试",tryS:"三个小问题。创建资料后经验会保留。",fin:"完成",tryBadge:"免费 · 无需注册",saveH:"太棒了！保存你的进度",saveS:"正等着你。创建免费资料即可保留，并解锁完整学习路径。",saveBtn:"保存经验并继续",tryMiss:"不错的尝试，现在你知道了。创建免费资料继续学习。"}
+ lang:"语言",signout:"退出登录",reset:"重置进度",resetQ:"清除所有课程、经验和连续记录？",lessonsDone:"已完成课程",total:"总经验",plan:"方案",member:"加入时间",about:"关于 Learnology",heroCta2:"三步开始",wzH:"三步设置你的课程",wzS:"选择语言、主题和难度，然后试答第一批问题，只需一分钟。",st1:"语言",st2:"主题与难度",st3:"试一试",step1T:"选择你的语言",step1S:"课程、题目和反馈都会切换成该语言，之后也可以更改。",step2T:"选择主题和难度",topic:"你想先学什么？",levelT:"你已经了解多少？",lvl1:"入门",lvl1d:"刚接触健康词汇，从基础开始。",lvl2:"有一定基础",lvl2d:"我懂基础，直接跳过，挑战我。",step3T:"试一试",back:"返回",cont:"继续",heroCta:"试试 1 分钟小课",pt1:"每节 2 分钟的小课程",pt2:"English、Español 和中文",pt3:"免费学习，有连续记录和经验",tryH:"注册前先试试",tryS:"三个小问题。创建资料后经验会保留。",fin:"完成",tryBadge:"免费 · 无需注册",saveH:"太棒了！保存你的进度",saveS:"正等着你。创建免费资料即可保留，并解锁完整学习路径。",saveBtn:"保存经验并继续",tryMiss:"不错的尝试，现在你知道了。创建免费资料继续学习。"}
 };
 
 /* ---------- content ---------- */
@@ -300,6 +316,17 @@ const UNITS=[
         ["朋友说感到绝望，最好的回应是？","转移话题","认真倾听，帮助对方寻求支持","叫他开心点","如果提到自伤，请拨打或发短信至 988（美国）或当地急救电话。"])]
 ]}
 ];
+const HARD=[
+[mc(1,["Which organs filter waste from your blood and make urine?","The lungs","The kidneys","The stomach","Kidneys clean the blood and send waste out as urine."],["¿Qué órganos filtran los desechos de la sangre y producen orina?","Los pulmones","Los riñones","El estómago","Los riñones limpian la sangre y eliminan los desechos como orina."],["哪个器官负责过滤血液中的废物并产生尿液？","肺","肾","胃","肾脏清洁血液，并把废物以尿液排出。"]),
+ mc(0,["\"Cardiac\" is a word about the...","Heart","Lungs","Skin","Cardiac means heart. A cardiologist is a heart doctor."],["\"Cardíaco\" es una palabra sobre el...","Corazón","Pulmones","Piel","Cardíaco significa del corazón. Un cardiólogo es un médico del corazón."],["“心脏的（cardiac）”这个词和什么有关？","心脏","肺","皮肤","Cardiac 指心脏。心脏科医生就是 cardiologist。"])],
+[mc(2,["A \"chronic\" condition is one that...","Appears suddenly and is gone in a day","Is always contagious","Lasts a long time, like asthma or diabetes","Chronic means long-lasting. Acute means sudden and short."],["Una condición \"crónica\" es una que...","Aparece de repente y se va en un día","Siempre es contagiosa","Dura mucho tiempo, como el asma o la diabetes","Crónico significa de larga duración. Agudo significa repentino y corto."],["“慢性”疾病是指…","突然出现，一天就好","总是会传染","持续很长时间，如哮喘或糖尿病","慢性指持续时间长，急性指突发且短暂。"]),
+ mc(0,["Blood pressure is 150/95. Which number is the systolic?","150, the top number","95, the bottom number","Both together","Systolic (top) is pressure when the heart beats. Diastolic (bottom) is when it rests."],["La presión es 150/95. ¿Cuál es la sistólica?","150, el número de arriba","95, el número de abajo","Los dos juntos","La sistólica (arriba) es la presión cuando late el corazón. La diastólica (abajo), cuando descansa."],["血压是 150/95，哪个是收缩压？","150，上面的数字","95，下面的数字","两个加起来","收缩压（高压）是心脏收缩时的压力，舒张压（低压）是心脏放松时的压力。"])],
+[mc(1,["Why does the flu shot change every year?","Old shots expire","Flu viruses change over time","Doctors prefer new brands","Flu viruses mutate, so the vaccine is updated to match."],["¿Por qué cambia cada año la vacuna de la gripe?","Las vacunas viejas caducan","Los virus de la gripe cambian con el tiempo","A los médicos les gustan marcas nuevas","Los virus mutan, así que la vacuna se actualiza."],["为什么流感疫苗每年都要更新？","旧疫苗会过期","流感病毒会随时间变化","医生喜欢新牌子","流感病毒会变异，所以疫苗要随之更新。"]),
+ mc(2,["\"Generic\" medicines are...","Weaker copies","Not approved","Same active ingredient as the brand name, often cheaper","Regulators require the same active ingredient and strength."],["Los medicamentos \"genéricos\" son...","Copias más débiles","No aprobados","Con el mismo ingrediente activo que la marca, y suelen costar menos","Las autoridades exigen el mismo ingrediente activo y la misma concentración."],["“仿制药”是…","效果较弱的复制品","未经批准","与品牌药有相同有效成分，通常更便宜","监管部门要求有效成分和含量相同。"])],
+[mc(0,["A panic attack is...","A sudden wave of intense fear with body symptoms, and it passes","Always a heart attack","Just being shy","Panic attacks feel scary but pass. If chest pain is new, get it checked."],["Un ataque de pánico es...","Una ola repentina de miedo intenso con síntomas físicos, y pasa","Siempre un infarto","Solo timidez","Los ataques de pánico asustan pero pasan. Si el dolor de pecho es nuevo, hazte revisar."],["惊恐发作是…","突然而来的强烈恐惧并伴有身体症状，会过去","一定是心脏病发作","只是害羞","惊恐发作很吓人但会过去。如果是新出现的胸痛，要去检查。"]),
+ mc(1,["When is it time to seek professional help?","After one bad day","When low mood or worry lasts weeks and affects daily life","Never","Lasting symptoms that disrupt life are a good reason to see a professional."],["¿Cuándo buscar ayuda profesional?","Tras un mal día","Cuando el ánimo bajo o la preocupación dura semanas y afecta tu vida diaria","Nunca","Síntomas duraderos que afectan tu vida son buena razón para ver a un profesional."],["什么时候该寻求专业帮助？","只有一天心情不好","情绪低落或担忧持续数周并影响日常生活","永远不用","持续并影响生活的症状，是寻求专业帮助的好理由。"])]
+];
+HARD.forEach((h,i)=>UNITS[i].lessons.push(h));
 const LESSONS=[];UNITS.forEach((u,ui)=>u.lessons.forEach((qs,li)=>LESSONS.push({id:ui+'-'+li,ui,li,qs})));
 
 const MOODS={good:{en:"Good",es:"Bien",zh:"不错"},ok:{en:"Okay",es:"Regular",zh:"一般"},low:{en:"Low",es:"Decaído",zh:"低落"},anx:{en:"Anxious",es:"Ansioso",zh:"焦虑"},lonely:{en:"Lonely",es:"Solo",zh:"孤独"}};
@@ -338,43 +365,73 @@ function route(){
 }
 
 /* ---------- landing + auth ---------- */
-let authMode='up',TEASE=null,QZ={i:0,xp:0,sel:null,done:false};
+let authMode='up',TEASE=null;
+let W={step:1,focus:0,level:'beginner',qs:null,i:0,xp:0,sel:null,done:false};
+const LVL={beginner:['lvl1','lvl1d'],intermediate:['lvl2','lvl2d']};
 function renderAuth(){
   const l=store.get('lg:lang',lang0),U=UI[l];
   document.documentElement.lang=l;
   const words=l==='en'?[["Hypertension","high blood pressure"],["Antibiotic","kills bacteria"],["血压","blood pressure"],["Anxiety","ansiedad · 焦虑"],["Vaccine","vacuna · 疫苗"]]:l==='es'?[["Hipertensión","presión arterial alta"],["Antibiótico","mata bacterias"],["血压","presión arterial"],["Ansiedad","anxiety · 焦虑"],["Vacuna","vaccine · 疫苗"]]:[["高血压","hypertension"],["抗生素","antibiotic"],["疫苗","vaccine · vacuna"],["焦虑","anxiety · ansiedad"],["剂量","dosage"]];
   app.innerHTML=`<div class="land">
   <header class="lh"><a class="logo" href="/">Learn<b>ology</b></a><div style="display:flex;gap:10px;align-items:center"><select id="al" aria-label="${U.lang}"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select><button class="btn ghost sm" id="hin">${U.login}</button></div></header>
-  <section class="hero"><div><h1>${U.tag}</h1><p>${U.sub}</p>
-    <button class="btn" id="htry">${U.heroCta}</button></div>
+  <section class="hero"><div><h1>${U.tag}</h1><p>${U.sub}</p><button class="btn" id="htry">${U.heroCta2}</button></div>
     <div class="words" aria-hidden="true">${words.map(w=>`<span>${w[0]}<small>${w[1]}</small></span>`).join('')}</div></section>
-  <section class="pts">${[U.pt1,U.pt2,U.pt3].map((p,i)=>`<div><b>${i+1}</b><p>${p}</p></div>`).join('')}</section>
-  <section class="try" id="try"><div class="trywrap"><span class="plus">${U.tryBadge}</span><h2>${U.tryH}</h2><p class="sub">${U.tryS}</p><div class="qcard" id="qz" aria-live="polite"></div></div></section>
+  <section class="try" id="try"><div class="trywrap"><span class="plus">${U.tryBadge}</span><h2>${U.wzH}</h2><p class="sub">${U.wzS}</p><div class="wizard" id="wz" aria-live="polite"></div></div></section>
   <section class="join" id="join"><div class="form"><div id="fm"></div></div></section>
   <footer class="lf"><a href="about.html">${U.about}</a></footer></div>`;
   $('#al').value=l;
-  $('#al').onchange=e=>{store.set('lg:lang',e.target.value);QZ={i:0,xp:0,sel:null,done:false};renderAuth()};
+  $('#al').onchange=e=>{store.set('lg:lang',e.target.value);W.qs=null;W.i=0;W.xp=0;W.sel=null;W.done=false;renderAuth()};
   $('#htry').onclick=()=>$('#try').scrollIntoView({behavior:'smooth'});
   $('#hin').onclick=()=>{authMode='in';drawForm();$('#join').scrollIntoView({behavior:'smooth'})};
-  drawQuiz();drawForm();
+  drawWizard();drawForm();
 }
-function drawQuiz(){
-  const l=store.get('lg:lang',lang0),U=UI[l],qs=UNITS[1].lessons[0],box=$('#qz');
-  if(QZ.done){
-    TEASE={xp:QZ.xp};
-    box.innerHTML=`<div class="center2"><div style="font-size:48px">🎉</div><h3>${U.done}</h3><div class="big"><div><b>⚡ ${QZ.xp}</b><small>${U.xp}</small></div></div><button class="btn coral" id="go">${U.saveBtn}</button></div>`;
-    $('#go').onclick=()=>{authMode='up';drawForm();$('#join').scrollIntoView({behavior:'smooth'})};return;
+function buildQs(){
+  const l=store.get('lg:lang',lang0),les=UNITS[W.focus].lessons[W.level==='beginner'?0:2];
+  W.qs=les.map(q=>{const d=q[l],o=d.slice(1,4),ord=shuffle([0,1,2]);return {q:d[0],opts:ord.map(i=>o[i]),a:ord.indexOf(q.a),e:d[4]}});
+  W.i=0;W.xp=0;W.sel=null;W.done=false;
+}
+function drawWizard(){
+  const l=store.get('lg:lang',lang0),U=UI[l],wz=$('#wz');
+  const names=[U.st1,U.st2,U.st3];
+  const dots=[1,2,3].map(n=>`<div class="sd ${W.step===n?'cur':W.step>n?'on':''}"><b>${W.step>n?'✓':n}</b><span>${names[n-1]}</span></div>`).join('<i class="sl"></i>');
+  let body='';
+  if(W.step===1){
+    const opts=[['en','English','Learn the language of your health'],['es','Español','Aprende el idioma de tu salud'],['zh','中文','学会你自己健康的语言']];
+    body=`<h3>${U.step1T}</h3><p class="sub">${U.step1S}</p><div class="cards">${opts.map(o=>`<button class="pick" data-l="${o[0]}" aria-pressed="${o[0]===l}"><b>${o[1]}</b><small>${o[2]}</small></button>`).join('')}</div>
+     <div class="wnav"><span></span><button class="btn" id="nx">${U.cont}</button></div>`;
+  }else if(W.step===2){
+    body=`<h3>${U.step2T}</h3><p class="sub">${U.topic}</p><div class="cards">${UNITS.map((u,i)=>`<button class="pick" data-f="${i}" aria-pressed="${i===W.focus}"><b>${T2(u.name,l)}</b><small>${T2(u.desc,l)}</small></button>`).join('')}</div>
+     <p class="sub" style="margin-top:18px">${U.levelT}</p><div class="cards two">${Object.keys(LVL).map(k=>`<button class="pick" data-v="${k}" aria-pressed="${k===W.level}"><b>${U[LVL[k][0]]}</b><small>${U[LVL[k][1]]}</small></button>`).join('')}</div>
+     <div class="wnav"><button class="btn ghost" id="bk">${U.back}</button><button class="btn" id="nx">${U.cont}</button></div>`;
+  }else{
+    if(!W.qs)buildQs();
+    if(W.done){
+      TEASE={xp:W.xp};
+      body=`<div class="center2"><div style="font-size:48px">🎉</div><h3>${U.done}</h3><div class="big"><div><b>⚡ ${W.xp}</b><small>${U.xp}</small></div></div><p class="sub">${T2(UNITS[W.focus].name,l)} · ${U[LVL[W.level][0]]}</p><button class="btn coral" id="go">${U.saveBtn}</button></div>`;
+    }else{
+      const q=W.qs[W.i],shown=W.sel!=null;
+      body=`<div class="qdots">${W.qs.map((_,i)=>`<i class="${i<W.i?'on':i===W.i?'cur':''}"></i>`).join('')}<span class="stat x">⚡ ${W.xp}</span></div><h3>${esc(q.q)}</h3>
+       <div class="opts">${q.opts.map((o,i)=>`<button class="opt ${shown?(i===q.a?'right':i===W.sel?'wrong':''):''}" data-i="${i}" ${shown?'disabled':''}><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>
+       ${shown?`<div class="qfb ${W.sel===q.a?'ok':'bad'}"><b>${W.sel===q.a?U.correct:U.wrong}</b> ${esc(q.e)}<div style="margin-top:12px"><button class="btn" id="qn">${W.i===W.qs.length-1?U.fin:U.next}</button></div></div>`:''}
+       ${!shown&&W.i===0?`<div class="wnav"><button class="btn ghost" id="bk">${U.back}</button><span></span></div>`:''}`;
+    }
   }
-  const d=qs[QZ.i][l],opts=d.slice(1,4),a=qs[QZ.i].a,shown=QZ.sel!=null;
-  box.innerHTML=`<div class="qdots">${qs.map((_,i)=>`<i class="${i<QZ.i?'on':i===QZ.i?'cur':''}"></i>`).join('')}<span class="stat x">⚡ ${QZ.xp}</span></div>
-   <h3>${esc(d[0])}</h3><div class="opts">${opts.map((o,i)=>`<button class="opt ${shown?(i===a?'right':i===QZ.sel?'wrong':''):''}" data-i="${i}" ${shown?'disabled':''}><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>
-   ${shown?`<div class="qfb ${QZ.sel===a?'ok':'bad'}"><b>${QZ.sel===a?U.correct:U.wrong}</b> ${esc(d[4])}<div style="margin-top:12px"><button class="btn" id="qn">${QZ.i===qs.length-1?U.fin:U.next}</button></div></div>`:''}`;
-  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;QZ.sel=i;if(i===a)QZ.xp+=10;drawQuiz()});
-  const n=$('#qn');if(n)n.onclick=()=>{QZ.sel=null;QZ.i++;if(QZ.i>=qs.length)QZ.done=true;drawQuiz()};
+  wz.innerHTML=`<div class="steps">${dots}</div>${body}`;
+  const nx=$('#nx');if(nx)nx.onclick=()=>{W.step++;if(W.step===3)W.qs=null;drawWizard()};
+  const bk=$('#bk');if(bk)bk.onclick=()=>{W.step--;W.qs=null;drawWizard()};
+  wz.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{store.set('lg:lang',b.dataset.l);W.qs=null;renderAuth();$('#try').scrollIntoView()});
+  wz.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{W.focus=+b.dataset.f;drawWizard()});
+  wz.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{W.level=b.dataset.v;drawWizard()});
+  if(W.step===3&&!W.done&&W.qs){
+    wz.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;W.sel=i;if(i===W.qs[W.i].a)W.xp+=10;drawWizard()});
+    const n=$('#qn');if(n)n.onclick=()=>{W.sel=null;W.i++;if(W.i>=W.qs.length)W.done=true;drawWizard()};
+  }
+  const go=$('#go');if(go)go.onclick=()=>{authMode='up';drawForm();$('#join').scrollIntoView({behavior:'smooth'})};
 }
+const T2=(o,l)=>o[l]||o.en;
 function drawForm(){
-  const l=store.get('lg:lang',lang0),U=UI[l],up=authMode==='up',fm=$('#fm');
-  fm.innerHTML=`<h2>${up&&TEASE&&TEASE.xp?U.saveH:up?U.signup:U.signin}</h2>${up&&TEASE&&TEASE.xp?`<p class="sub" style="margin:-8px 0 8px">⚡ +${TEASE.xp} XP ${U.saveS}</p>`:''}
+  const l=store.get('lg:lang',lang0),U=UI[l],up=authMode==='up',fm=$('#fm'),got=up&&TEASE;
+  fm.innerHTML=`<h2>${got?U.saveH:up?U.signup:U.signin}</h2>${got?`<p class="sub" style="margin:-8px 0 8px">⚡ +${TEASE.xp} XP ${U.saveS}</p><p class="chipline">${T2(UNITS[W.focus].name,l)} · ${U[LVL[W.level][0]]} · ${l==='en'?'English':l==='es'?'Español':'中文'}</p>`:''}
    <form id="af" novalidate>${up?`<label for="n">${U.name}</label><input id="n" autocomplete="name">`:''}
    <label for="e">${U.email}</label><input id="e" type="email" autocomplete="email">
    <label for="p">${U.pw}</label><input id="p" type="password" autocomplete="${up?'new-password':'current-password'}">
@@ -392,7 +449,8 @@ function drawForm(){
     if(up){
       if(acc[email])return er(U.errTaken);
       acc[email]=h;store.set('lg:accounts',acc);
-      store.set('lg:p:'+email,{name,lang:l,xp:TEASE?TEASE.xp:0,streak:0,last:'',done:{},plan:'free',joined:day()});
+      const done={};if(W.level==='intermediate'){done[W.focus+'-0']=true;done[W.focus+'-1']=true}
+      store.set('lg:p:'+email,{name,lang:l,xp:TEASE?TEASE.xp:0,streak:0,last:'',done,plan:'free',joined:day(),focus:W.focus,level:W.level});
     }else if(acc[email]!==h)return er(U.errBad);
     SESS={email};store.set('lg:session',SESS);loadProfile();
     if(!P){P={name:email,lang:l,xp:0,streak:0,last:'',done:{},plan:'free',joined:day()};save()}
@@ -420,11 +478,11 @@ function shell(active,inner){
 
 /* ---------- learn path ---------- */
 function renderLearn(){
-  const cur=currentIdx();let html='';
+  const fu=P.focus||0,curL=LESSONS.find(l=>l.ui===fu&&!P.done[l.id])||LESSONS.find(l=>!P.done[l.id]),curId=curL&&curL.id;let html='';
   UNITS.forEach((u,ui)=>{
     html+=`<div class="unit ${u.c}"><div><div class="tag">${t('unit')} ${ui+1}</div><h2>${T(u.name)}</h2><p>${T(u.desc)}</p></div></div><div class="pathcol">`;
     LESSONS.filter(l=>l.ui===ui).forEach(l=>{
-      const idx=LESSONS.indexOf(l),done=P.done[l.id],isCur=idx===cur,locked=idx>cur;
+      const done=P.done[l.id],isCur=l.id===curId,locked=l.li>0&&!P.done[l.ui+'-'+(l.li-1)];
       const off=[0,46,64,30,-30,-56][ (l.li+ui*2)%6 ];
       html+=`<button class="node ${isCur?'cur':''}" style="--c:var(--${['green','coral','blue','green'][ui]});--cd:var(--${['green','coral','blue','green'][ui]}-d,var(--green-d));transform:translateX(${off}px)" ${locked?'disabled':''} data-l="${l.id}" aria-label="${T(u.name)} ${l.li+1}">${done?'✓':l.li+1}</button>`;
     });
