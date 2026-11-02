@@ -4,245 +4,522 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Learnology</title>
-<meta name="description" content="Learn the language of your own health. Bite-size health and medical literacy lessons in many languages.">
+<meta name="description" content="Learn the language of your own health. Bite-size health and medical literacy lessons in English, Spanish and Chinese.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f1e7;--ink:#17332b;--muted:#5b6f67;--card:#fffdf8;--line:#ddd5c3;--green:#1f6f54;--green-d:#14503c;--coral:#e4572e;--sun:#f2b84b;--ok:#1f6f54;--bad:#b3341b}
-@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10201b;--ink:#eee8da;--muted:#9fb3aa;--card:#172a24;--line:#2c443b;--green:#56b58f;--green-d:#7fd1ad;--coral:#ff7a50;--sun:#f2b84b;--ok:#7fd1ad;--bad:#ff8f77}}
+:root{--bg:#f6f1e7;--ink:#17332b;--muted:#5b6f67;--card:#fffdf8;--line:#ddd5c3;--green:#1f6f54;--green-d:#14503c;--coral:#e4572e;--coral-d:#b83f1c;--sun:#f2b84b;--sun-d:#c28f26;--blue:#3d6b8c;--blue-d:#2b4d66;--ok:#1f6f54;--bad:#b3341b;--lock:#cfc7b4;--lock-d:#b3ab97}
+@media (prefers-color-scheme:dark){:root{--bg:#10201b;--ink:#eee8da;--muted:#9fb3aa;--card:#172a24;--line:#2c443b;--green:#3f9c78;--green-d:#2a7456;--coral:#ff7a50;--coral-d:#c95530;--ok:#7fd1ad;--bad:#ff8f77;--lock:#2c443b;--lock-d:#223731}}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Figtree,system-ui,sans-serif}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.08;margin:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 Figtree,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1;margin:0}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
 a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px;flex-wrap:wrap}
-.logo{font:800 26px Fraunces,serif;text-decoration:none;letter-spacing:-.5px}
-.logo b{color:var(--coral)}
-nav{display:flex;gap:18px;font-weight:500;font-size:15px}
-nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
-.hero{padding:48px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800;letter-spacing:-1.5px}
-.hero h1 em{font-style:normal;color:var(--coral)}
-.hero p{font-size:20px;color:var(--muted);max-width:30em;margin:20px 0 28px}
-.btn{display:inline-block;background:var(--green);color:#fff;border:0;border-radius:10px;padding:13px 22px;font:700 16px Figtree,sans-serif;cursor:pointer;text-decoration:none;box-shadow:0 4px 0 var(--green-d);transition:transform .08s,box-shadow .08s}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
-.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
-.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
-.words{display:flex;flex-wrap:wrap;gap:10px}
-.words span{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 16px;font:600 22px Fraunces,serif}
-.words span small{display:block;font:500 13px Figtree,sans-serif;color:var(--muted)}
-.words span:nth-child(2n){transform:rotate(-2deg)}.words span:nth-child(3n){transform:rotate(2deg);background:var(--sun);color:#17332b;border-color:#17332b}
-.words span:nth-child(3n) small{color:#4b4220}
-section{padding:56px 0;border-top:1px solid var(--line)}
-section>.wrap>h2{font-size:clamp(30px,4.4vw,46px);margin-bottom:10px;letter-spacing:-.8px}
-.lead{color:var(--muted);max-width:40em;margin:0 0 28px}
+.btn{display:inline-block;background:var(--green);color:#fff;border:0;border-radius:12px;padding:13px 22px;font:800 15px Figtree,sans-serif;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;text-decoration:none;box-shadow:0 4px 0 var(--green-d);transition:transform .08s,box-shadow .08s;text-align:center}
+.btn:active:not(:disabled){transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+.btn:disabled{background:var(--lock);color:var(--muted);box-shadow:0 4px 0 var(--lock-d);cursor:not-allowed}
+.btn.coral{background:var(--coral);box-shadow:0 4px 0 var(--coral-d)}
+.btn.sun{background:var(--sun);color:#17332b;box-shadow:0 4px 0 var(--sun-d)}
+.btn.ghost{background:var(--card);color:var(--ink);box-shadow:0 4px 0 var(--line);border:2px solid var(--line)}
+.btn.block{display:block;width:100%}
+.logo{font:800 28px Fraunces,serif;text-decoration:none;letter-spacing:-.5px}.logo b{color:var(--coral)}
+/* auth */
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.auth-l{background:var(--green);color:#fff;padding:40px;display:flex;flex-direction:column;justify-content:space-between}
+.auth-l .logo{color:#fff}
+.auth-l h1{font-size:clamp(36px,4.6vw,60px);font-weight:800;letter-spacing:-1.2px;max-width:11em}
+.auth-l h1 em{font-style:normal;color:var(--sun)}
+.auth-l p{max-width:26em;opacity:.9;font-size:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.chips span{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.3);border-radius:12px;padding:8px 14px;font:600 20px Fraunces,serif}
+.auth-r{display:flex;align-items:center;justify-content:center;padding:32px}
+.form{width:100%;max-width:380px}
+.form h2{font-size:32px;margin-bottom:18px}
+.form label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}
+.form input{width:100%;padding:13px 14px;border-radius:12px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:500 17px Figtree,sans-serif}
+.form input:focus{border-color:var(--green);outline:none}
+.err{color:var(--bad);font-weight:600;min-height:24px;margin:10px 0 2px;font-size:15px}
+.swap{margin-top:16px;text-align:center;color:var(--muted);font-size:15px}
+.swap button{background:none;border:0;color:var(--blue);font-weight:800;cursor:pointer;text-decoration:underline;font-size:15px}
+.fine{font-size:13px;color:var(--muted);margin-top:14px;text-align:center}
+.lang-pick{position:absolute;top:16px;right:20px}
+select{font:600 15px Figtree,sans-serif;padding:7px 10px;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+/* shell */
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr) 300px;min-height:100vh;max-width:1180px;margin:0 auto}
+.side{padding:24px 14px;position:sticky;top:0;height:100vh;border-right:2px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.side .logo{padding:0 12px 18px}
+.nav a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;text-decoration:none;font:800 14px Figtree;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:2px solid transparent}
+.nav a:hover{background:var(--card)}
+.nav a.on{background:color-mix(in srgb,var(--green) 14%,var(--bg));border-color:var(--green);color:var(--green)}
+.nav i{font-style:normal;font-size:20px;width:26px;text-align:center}
+.main{padding:24px 24px 100px;min-width:0}
+.rail{padding:24px 20px;position:sticky;top:0;height:100vh;overflow:auto}
+.stats{display:flex;gap:8px;justify-content:space-between;margin-bottom:18px}
+.stat{font:800 17px Figtree;display:flex;gap:6px;align-items:center}
+.stat.s{color:var(--coral)}.stat.x{color:var(--sun-d)}.stat.h{color:var(--bad)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.tabs-m{display:none}
+/* path */
+.unit{border-radius:16px;padding:16px 20px;color:#fff;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.unit h2{font-size:24px}.unit p{margin:2px 0 0;opacity:.92;font-size:15px}
+.unit .tag{font:800 12px Figtree;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.u0{background:var(--green)}.u1{background:var(--coral)}.u2{background:var(--blue)}.u3{background:#7a3b69}.u1,.u2{}
+.sunbg{background:var(--sun);color:#17332b}
+.pathcol{display:flex;flex-direction:column;align-items:center;padding:22px 0 30px}
+.node{position:relative;width:76px;height:70px;border-radius:50%;border:0;margin:10px 0;font:800 26px Fraunces,serif;cursor:pointer;color:#fff;background:var(--c);box-shadow:0 7px 0 var(--cd);transition:transform .08s,box-shadow .08s}
+.node:active:not(:disabled){transform:translateY(5px);box-shadow:0 2px 0 var(--cd)}
+.node:disabled{background:var(--lock);--cd:var(--lock-d);color:var(--muted);cursor:not-allowed;box-shadow:0 7px 0 var(--lock-d)}
+.node.cur::after{content:"START";position:absolute;top:-34px;left:50%;transform:translateX(-50%);background:var(--card);color:var(--green);border:2px solid var(--line);border-radius:10px;padding:2px 10px;font:800 13px Figtree;letter-spacing:.06em;animation:bob 1.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translate(-50%,-5px)}}
+.nlabel{font-weight:700;font-size:14px;color:var(--muted);margin-top:-2px}
 /* lesson */
-.lesson{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px;max-width:680px}
-.bar{display:flex;gap:14px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
-.prog{flex:1;min-width:120px;height:12px;background:var(--line);border-radius:6px;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
-.stat{font-weight:700;font-size:15px}
-select{font:500 15px Figtree,sans-serif;padding:7px 10px;border-radius:8px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
-.q{font:700 26px Fraunces,serif;margin:6px 0 16px}
-.opts{display:grid;gap:10px}
-.opt{text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 16px;font:500 17px Figtree,sans-serif;color:var(--ink);cursor:pointer}
-.opt:hover:not(:disabled){border-color:var(--green)}
-.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--bg))}
-.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--bg))}
-.fb{min-height:52px;margin:14px 0 4px;font-size:16px}
-.fb b{display:block}
-.done{text-align:center;padding:18px 0}
-.done h3{font-size:34px;margin-bottom:8px}
-/* checkin */
+.lesson{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;z-index:10}
+.ltop{display:flex;align-items:center;gap:16px;max-width:760px;width:100%;margin:0 auto;padding:18px 20px}
+.x{background:none;border:0;font-size:28px;color:var(--muted);cursor:pointer;line-height:1}
+.prog{flex:1;height:16px;background:var(--line);border-radius:8px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--green);border-radius:8px;transition:width .3s;width:0}
+.lbody{flex:1;overflow:auto;max-width:760px;width:100%;margin:0 auto;padding:10px 20px 30px}
+.lbody h2{font-size:clamp(26px,4vw,34px);margin:10px 0 24px}
+.opts{display:grid;gap:12px}
+.opt{display:flex;gap:14px;align-items:center;text-align:left;background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:14px;padding:14px 16px;font:600 18px Figtree;cursor:pointer}
+.opt kbd{font:800 13px Figtree;border:2px solid var(--line);border-radius:8px;width:28px;height:28px;display:grid;place-items:center;color:var(--muted);flex:none}
+.opt:hover:not(:disabled){background:color-mix(in srgb,var(--blue) 8%,var(--card))}
+.opt.sel{border-color:var(--blue);background:color-mix(in srgb,var(--blue) 14%,var(--card))}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--card))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match .opt{justify-content:center;text-align:center;font-size:16px}
+.opt.gone{visibility:hidden}
+.lbar{border-top:2px solid var(--line);padding:18px 20px calc(18px + env(safe-area-inset-bottom))}
+.lbar.ok{background:color-mix(in srgb,var(--ok) 18%,var(--bg))}.lbar.bad{background:color-mix(in srgb,var(--bad) 16%,var(--bg))}
+.lbar>div{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lbar .fb{flex:1;min-width:200px}.fb b{display:block;font:800 22px Fraunces,serif}
+.lbar.ok .fb{color:var(--ok)}.lbar.bad .fb{color:var(--bad)}.fb span{display:block;color:var(--ink);font-size:15px;font-weight:500}
+.lbar .btn{min-width:160px}
+.hearts{font-weight:800;color:var(--bad)}
+.center{text-align:center;max-width:460px;margin:8vh auto 0}
+.center h1{font-size:40px;margin-bottom:10px}
+.big{display:flex;gap:14px;justify-content:center;margin:24px 0}
+.big div{border:2px solid var(--line);border-radius:14px;padding:12px 18px;min-width:110px;background:var(--card)}
+.big b{display:block;font:800 26px Fraunces}.big small{color:var(--muted);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.06em}
+/* pages */
+.page h1{font-size:34px;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 22px}
 .moods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-.moods button{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px 16px;font:600 16px Figtree,sans-serif;color:var(--ink);cursor:pointer}
+.moods button{background:var(--card);border:2px solid var(--line);border-bottom-width:5px;border-radius:14px;padding:12px 18px;font:700 16px Figtree;cursor:pointer}
 .moods button[aria-pressed=true]{border-color:var(--coral);background:color-mix(in srgb,var(--coral) 14%,var(--card))}
-.reply{background:var(--card);border-left:5px solid var(--coral);border-radius:0 12px 12px 0;padding:16px 18px;max-width:640px;min-height:60px}
-.note{font-size:14px;color:var(--muted);margin-top:14px;max-width:640px}
-/* grids */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:2px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
-.grid>div{padding:22px;border-right:2px solid var(--line);border-bottom:2px solid var(--line);margin:-1px -1px 0 0}
-.grid h3{font-size:22px;margin-bottom:6px}
-.grid p{margin:0;color:var(--muted);font-size:15.5px}
-table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
-th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-th{font:700 13px Figtree;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-tr.us td{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
-.tbl{overflow-x:auto}
-.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
-.tl div{border-top:5px solid var(--coral);padding-top:10px}
-.tl b{font:700 20px Fraunces,serif;display:block}
-.tl p{margin:4px 0 0;color:var(--muted);font-size:15px}
-footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:24px}nav{display:none}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.reply{border-left:5px solid var(--coral);background:var(--card);border-radius:0 14px 14px 0;padding:16px 18px;max-width:560px}
+.note{font-size:14px;color:var(--muted);max-width:560px;margin-top:14px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:8px}
+.plan{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.plan.best{border-color:var(--coral);position:relative}
+.plan.best::before{content:attr(data-badge);position:absolute;top:-13px;left:18px;background:var(--coral);color:#fff;border-radius:8px;padding:2px 10px;font:800 12px Figtree;letter-spacing:.06em;text-transform:uppercase}
+.plan h3{font-size:24px}.price{font:800 38px Fraunces}.price small{font:600 15px Figtree;color:var(--muted)}
+.plan ul{list-style:none;padding:0;margin:6px 0 10px;flex:1}
+.plan li{padding:5px 0 5px 24px;position:relative;font-size:15.5px}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border:0}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:grid;place-items:center;z-index:30;padding:20px}
+.modal>div{background:var(--card);border-radius:18px;padding:26px;max-width:400px;width:100%}
+.modal h3{font-size:26px;margin-bottom:8px}
+.modal .acts{display:flex;gap:10px;margin-top:18px}.modal .acts .btn{flex:1}
+.plus{background:var(--sun);color:#17332b;border-radius:6px;padding:1px 8px;font:800 12px Figtree;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle}
+@media(max-width:1020px){.shell{grid-template-columns:200px minmax(0,1fr)}.rail{display:none}}
+@media(max-width:720px){
+ .auth{grid-template-columns:1fr}.auth-l{padding:26px;gap:24px}.auth-l h1{font-size:34px}.chips{display:none}.lang-pick{position:static;margin-bottom:10px}
+ .shell{display:block}.side{display:none}.main{padding:14px 16px 96px}
+ .tabs-m{display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:2px solid var(--line);z-index:5;padding-bottom:env(safe-area-inset-bottom)}
+ .tabs-m a{flex:1;text-align:center;padding:10px 0 8px;text-decoration:none;font:800 11px Figtree;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+ .tabs-m a i{display:block;font-style:normal;font-size:22px}.tabs-m a.on{color:var(--green)}
+ .topstats{display:flex!important}
+ .match{gap:8px}
+}
+.topstats{display:none;justify-content:space-between;padding:4px 2px 14px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <a class="logo" href="#">Learn<b>ology</b></a>
-  <nav><a href="#try">Try a lesson</a><a href="#checkin">Check-in</a><a href="#why">Why</a><a href="#market">Market</a><a href="#model">Business model</a></nav>
-</header>
-
-<div class="hero">
-  <div>
-    <h1>Learn the <em>language</em> of your own health.</h1>
-    <p>Short, game-style lessons on medical terms, conditions and mental health, in the language you actually speak. Like Duolingo, but for understanding your body.</p>
-    <a class="btn" href="#try">Start a 2-minute lesson</a> <a class="btn ghost" href="#why">Why we built it</a>
-  </div>
-  <div class="words" aria-hidden="true">
-    <span>Hypertension<small>high blood pressure</small></span>
-    <span>Antibiotic<small>kills bacteria</small></span>
-    <span>血压<small>blood pressure</small></span>
-    <span>Anxiety<small>ansiedad · 焦虑</small></span>
-    <span>Vaccine<small>vacuna · 疫苗</small></span>
-  </div>
-</div>
-</div>
-
-<section id="try"><div class="wrap">
-  <h2>Try a lesson</h2>
-  <p class="lead">Five questions. Pick a language and the whole lesson switches. Wrong answers teach you something too.</p>
-  <div class="lesson" id="lesson" aria-live="polite">
-    <div class="bar">
-      <div class="prog" role="progressbar" aria-label="Lesson progress"><i id="prog"></i></div>
-      <span class="stat">⚡ <span id="xp">0</span> XP</span>
-      <label class="stat">Language <select id="lang"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></label>
-    </div>
-    <div id="card"></div>
-  </div>
-</div></section>
-
-<section id="checkin"><div class="wrap">
-  <h2>Daily check-in</h2>
-  <p class="lead">Learnology also helps you notice how you feel and what to do next. How are you today?</p>
-  <div class="moods" id="moods" role="group" aria-label="Mood">
-    <button data-m="good" aria-pressed="false">Good</button>
-    <button data-m="ok" aria-pressed="false">Okay</button>
-    <button data-m="low" aria-pressed="false">Low</button>
-    <button data-m="anx" aria-pressed="false">Anxious</button>
-    <button data-m="lonely" aria-pressed="false">Lonely</button>
-  </div>
-  <div class="reply" id="reply">Pick one. Nothing is saved or sent anywhere.</div>
-  <p class="note">If you are in crisis in the U.S., call or text <b>988</b> (Suicide &amp; Crisis Lifeline). This is an education tool, not medical care.</p>
-</div></section>
-
-<section id="why"><div class="wrap">
-  <h2>The problem</h2>
-  <p class="lead">People can't act on what they can't understand, and many of us only find out too late.</p>
-  <div class="grid">
-    <div><h3>Language barriers</h3><p>Patients who don't share a language with their provider struggle to follow instructions, and translation apps give words, not understanding.</p></div>
-    <div><h3>Low health literacy</h3><p>Terms like "hypertension" or "dosage" are never taught in school, so people skip visits or stop treatment.</p></div>
-    <div><h3>Mental health and isolation</h3><p>Suicide rates have risen over the past decade despite more resources. Loneliness and poor mental health feed each other.</p></div>
-    <div><h3>Hard-to-reach groups</h3><p>Older adults often see doctor visits as too troublesome. Kids get no early, friendly introduction to their own bodies.</p></div>
-  </div>
-</div></section>
-
-<section id="how"><div class="wrap">
-  <h2>How it works</h2>
-  <p class="lead">One-sentence solution: a free, multilingual, game-based platform that teaches health and medical literacy to every age.</p>
-  <div class="grid">
-    <div><h3>Bite-size games</h3><p>Streaks, XP and short quizzes on basic terms, illnesses and conditions.</p></div>
-    <div><h3>Videos in many languages</h3><p>Playful clips for kids (think GoNoodle) and more mature ones for adults.</p></div>
-    <div><h3>Mental health awareness</h3><p>Learn the signs, name what you feel, and know the next step.</p></div>
-    <div><h3>Ready for the visit</h3><p>Learn the words before the appointment so check-in is faster and less scary.</p></div>
-  </div>
-</div></section>
-
-<section id="market"><div class="wrap">
-  <h2>Competitors</h2>
-  <p class="lead">Our real competitors are the tools people already use to cope: search engines, translation apps, and social media. Figures to be sourced before submission.</p>
-  <div class="tbl"><table>
-    <tr><th>Option</th><th>What it does</th><th>Gap</th></tr>
-    <tr><td>Google / Google Translate</td><td>Instant answers and word-for-word translation</td><td>No structure, no retention, no context</td></tr>
-    <tr><td>WebMD, Healthline</td><td>Symptom and condition articles</td><td>Reading-heavy, mostly English, not engaging</td></tr>
-    <tr><td>Duolingo</td><td>Gamified language learning</td><td>No health content</td></tr>
-    <tr><td>Therapy and peer-support apps</td><td>Counseling, community</td><td>Cost, waitlists, limited languages</td></tr>
-    <tr class="us"><td>Learnology</td><td>Gamified health literacy in many languages</td><td>Combines all three gaps</td></tr>
-  </table></div>
-</div></section>
-
-<section id="model"><div class="wrap">
-  <h2>Business model</h2>
-  <p class="lead">Free to learn. Funded by mission-aligned partners so cost never blocks access.</p>
-  <div class="grid">
-    <div><h3>Free tier with ads</h3><p>Core lessons stay free. Ad-free paid plan for families and schools.</p></div>
-    <div><h3>Grants and government</h3><p>Public health and suicide-prevention funding.</p></div>
-    <div><h3>Sponsorships</h3><p>Health systems and insurers sponsoring language packs.</p></div>
-    <div><h3>School partnerships</h3><p>Talks and classroom use as the first distribution channel.</p></div>
-  </div>
-  <h2 style="margin-top:44px;font-size:30px">Roadmap</h2>
-  <div class="tl" style="margin-top:16px">
-    <div><b>Now</b><p>Prototype, interview 5-10 real users</p></div>
-    <div><b>Year 1</b><p>3 languages, school pilots, first grant</p></div>
-    <div><b>Year 2</b><p>Adult and senior tracks, sponsors</p></div>
-    <div><b>Year 3</b><p>10+ languages, clinic partnerships</p></div>
-  </div>
-</div></section>
-
-<footer><div class="wrap">Learnology is a student business-plan prototype. Content is educational and not medical advice.</div></footer>
-
+<div id="app"></div>
 <script>
-const T={
-en:{lbl:"Question",ok:"Correct!",no:"Not quite.",next:"Next",fin:"Finish",done:"Lesson complete",score:"You earned",again:"Play again",
-Q:[
-{q:"What does \"hypertension\" mean?",o:["Low blood sugar","High blood pressure","A fast heartbeat"],a:1,e:"Hyper means too much. Hypertension is blood pressure that stays too high."},
-{q:"Antibiotics are used to treat...",o:["Viruses like the flu","Bacterial infections","Allergies"],a:1,e:"Antibiotics kill bacteria. They do not work on viruses."},
-{q:"A vaccine helps your body...",o:["Practice fighting a germ safely","Skip sleeping","Digest food"],a:0,e:"Vaccines train your immune system before the real germ shows up."},
-{q:"What is a \"dosage\"?",o:["A kind of illness","How much medicine to take and when","A doctor's room"],a:1,e:"Always follow the dosage on the label or from your pharmacist."},
-{q:"Feeling anxious often is...",o:["Something to hide","Common, and help is available","Never serious"],a:1,e:"Anxiety is common and treatable. Talking to someone is a strong first step."}]},
-es:{lbl:"Pregunta",ok:"¡Correcto!",no:"Casi.",next:"Siguiente",fin:"Terminar",done:"Lección completa",score:"Ganaste",again:"Jugar otra vez",
-Q:[
-{q:"¿Qué significa \"hipertensión\"?",o:["Azúcar baja en la sangre","Presión arterial alta","Latidos rápidos"],a:1,e:"Hiper significa demasiado. La hipertensión es presión arterial que se mantiene alta."},
-{q:"Los antibióticos se usan para tratar...",o:["Virus como la gripe","Infecciones bacterianas","Alergias"],a:1,e:"Los antibióticos matan bacterias. No funcionan contra virus."},
-{q:"Una vacuna ayuda a tu cuerpo a...",o:["Practicar cómo combatir un germen sin riesgo","Dormir menos","Digerir comida"],a:0,e:"Las vacunas entrenan tu sistema inmune antes de que llegue el germen real."},
-{q:"¿Qué es la \"dosis\"?",o:["Un tipo de enfermedad","Cuánta medicina tomar y cuándo","Un consultorio"],a:1,e:"Sigue siempre la dosis de la etiqueta o de tu farmacéutico."},
-{q:"Sentir ansiedad con frecuencia es...",o:["Algo que ocultar","Común, y hay ayuda disponible","Nunca grave"],a:1,e:"La ansiedad es común y tratable. Hablar con alguien es un buen primer paso."}]},
-zh:{lbl:"问题",ok:"答对了！",no:"差一点。",next:"下一题",fin:"完成",done:"课程完成",score:"你获得了",again:"再玩一次",
-Q:[
-{q:"“高血压”是什么意思？",o:["低血糖","血压持续偏高","心跳很快"],a:1,e:"高血压指血压长期过高。"},
-{q:"抗生素用来治疗…",o:["流感等病毒","细菌感染","过敏"],a:1,e:"抗生素杀灭细菌，对病毒无效。"},
-{q:"疫苗能帮助身体…",o:["安全地练习对抗病菌","少睡觉","消化食物"],a:0,e:"疫苗让免疫系统在真正的病菌到来前先训练。"},
-{q:"什么是“剂量”？",o:["一种疾病","吃多少药、什么时候吃","诊室"],a:1,e:"请始终按药品标签或药剂师的剂量服用。"},
-{q:"经常感到焦虑…",o:["应该隐藏","很常见，而且可以获得帮助","从不严重"],a:1,e:"焦虑很常见，也可以治疗。和人聊聊是很好的第一步。"}]}
-};
-const $=id=>document.getElementById(id);
-let i=0,xp=0,lang=localStorage.getItem('lang')||'en';
-try{}catch(e){}
-$('lang').value=lang;
-$('lang').onchange=e=>{lang=e.target.value;try{localStorage.setItem('lang',lang)}catch(_){}i=0;xp=0;render()};
-function render(){
-  const t=T[lang],c=$('card'),n=t.Q.length;
-  $('xp').textContent=xp;$('prog').style.width=(i/n*100)+'%';
-  document.documentElement.lang=lang==='zh'?'zh':lang;
-  if(i>=n){c.innerHTML=`<div class="done"><h3>${t.done} 🎉</h3><p>${t.score} ${xp} XP</p><button class="btn" id="again">${t.again}</button></div>`;$('again').onclick=()=>{i=0;xp=0;render()};return}
-  const q=t.Q[i];
-  c.innerHTML=`<div class="stat" style="color:var(--muted)">${t.lbl} ${i+1}/${n}</div><div class="q">${q.q}</div><div class="opts">${q.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')}</div><div class="fb" id="fb"></div>`;
-  c.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.k));
-}
-function answer(k){
-  const t=T[lang],q=t.Q[i],good=k===q.a;
-  document.querySelectorAll('.opt').forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('right');else if(j===k)b.classList.add('wrong')});
-  if(good){xp+=10;$('xp').textContent=xp}
-  const last=i===t.Q.length-1;
-  $('fb').innerHTML=`<b style="color:var(${good?'--ok':'--bad'})">${good?t.ok:t.no}</b>${q.e}<div style="margin-top:12px"><button class="btn" id="nx">${last?t.fin:t.next}</button></div>`;
-  $('nx').focus();$('nx').onclick=()=>{i++;render()};
-}
-render();
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s), app=$('#app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v??d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const day=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const daysBetween=(a,b)=>Math.round((new Date(b+'T00:00')-new Date(a+'T00:00'))/864e5);
+async function hash(pw,salt){const b=new TextEncoder().encode(salt+':'+pw);const h=await crypto.subtle.digest('SHA-256',b);return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}
 
-const R={
-good:"Great. Keep it going: a short walk, water, and a message to someone you like are small habits that stick.",
-ok:"Okay is fine. Try naming one thing that would make today a bit better, then do just that.",
-low:"Low days happen. Rest, eat something, and tell one person. If it lasts more than two weeks, talk to a doctor or counselor.",
-anx:"Try this: breathe in for 4, hold for 4, out for 6, five times. Anxiety is common and treatable. A clinician can help if it keeps coming back.",
-lonely:"Loneliness and mental health affect each other. Reach out to one person today, even with a short text. Peer support can help too. If you feel unsafe, call or text 988."
+/* ---------- UI strings ---------- */
+const UI={
+en:{tag:"Learn the <em>language</em> of your own health.",sub:"Free, game-style lessons on the body, doctor visits, medicines and mental health.",
+ signin:"Sign in",signup:"Create your profile",name:"Name",email:"Email",pw:"Password",go:"Get started",login:"Sign in",have:"Already have an account?",none:"New here?",
+ fine:"Accounts live on this device only. Don't reuse a password from another site.",errAll:"Fill in every field.",errPw:"Password needs 6+ characters.",errBad:"Wrong email or password.",errTaken:"That email already has an account. Sign in instead.",
+ learn:"Learn",mind:"Mind",plans:"Plans",me:"Profile",unit:"Unit",start:"Start",next:"Continue",check:"Check",correct:"Correct!",wrong:"Not quite",answer:"Answer:",
+ done:"Lesson complete!",xp:"XP earned",streak:"Day streak",acc:"Accuracy",fail:"Out of hearts",failsub:"Take a breath and try this lesson again.",retry:"Try again",quit:"Quit this lesson? Progress in it will be lost.",
+ matchQ:"Match each term to its meaning",welcome:"Welcome",today:"Daily goal",goal:"Finish one lesson today to keep your streak.",goalDone:"Goal complete. See you tomorrow!",
+ mindT:"How are you feeling?",mindS:"A quick check-in. Nothing is saved or sent anywhere.",crisis:"In the U.S., call or text 988 (Suicide & Crisis Lifeline) if you are in crisis. This app is education, not medical care.",
+ plansT:"Choose your plan",plansS:"Learning stays free. Plus removes limits and supports free access for others.",demo:"Demo pricing. No payment is taken in this prototype.",
+ free:"Free",plus:"Plus",school:"Schools & clinics",mo:"/month",yr:"/year",bestv:"Best value",cur:"Current plan",upgrade:"Choose Plus",manage:"Cancel Plus",monthly:"Monthly",yearly:"Yearly",contact:"Contact us",
+ f1:"All lessons, all languages",f2:"3 hearts per lesson",f3:"Daily streak and XP",
+ p1:"Everything in Free",p2:"Unlimited hearts",p3:"Streak freeze: one missed day won't reset your streak",p4:"Supporter badge",
+ s1:"Group accounts for classrooms",s2:"Progress reports for teachers",s3:"Translated materials for patients",
+ coT:"Demo checkout",coS:"No card is charged. This only switches Plus on for this device.",coOk:"Start Plus",coNo:"Cancel",
+ lang:"Language",signout:"Sign out",reset:"Reset progress",resetQ:"Erase all lessons, XP and streak?",lessonsDone:"Lessons done",total:"Total XP",plan:"Plan",member:"Member since",about:"About Learnology"},
+es:{tag:"Aprende el <em>idioma</em> de tu propia salud.",sub:"Lecciones gratis en forma de juego sobre el cuerpo, las visitas al médico, los medicamentos y la salud mental.",
+ signin:"Iniciar sesión",signup:"Crea tu perfil",name:"Nombre",email:"Correo",pw:"Contraseña",go:"Empezar",login:"Entrar",have:"¿Ya tienes cuenta?",none:"¿Eres nuevo?",
+ fine:"Las cuentas se guardan solo en este dispositivo. No reutilices una contraseña de otro sitio.",errAll:"Completa todos los campos.",errPw:"La contraseña necesita 6 o más caracteres.",errBad:"Correo o contraseña incorrectos.",errTaken:"Ese correo ya tiene cuenta. Inicia sesión.",
+ learn:"Aprender",mind:"Mente",plans:"Planes",me:"Perfil",unit:"Unidad",start:"Empezar",next:"Continuar",check:"Comprobar",correct:"¡Correcto!",wrong:"Casi",answer:"Respuesta:",
+ done:"¡Lección completa!",xp:"XP ganados",streak:"Días seguidos",acc:"Precisión",fail:"Sin corazones",failsub:"Respira e intenta esta lección otra vez.",retry:"Intentar de nuevo",quit:"¿Salir de la lección? Perderás el progreso de esta lección.",
+ matchQ:"Une cada término con su significado",welcome:"Bienvenido",today:"Meta diaria",goal:"Termina una lección hoy para mantener tu racha.",goalDone:"Meta cumplida. ¡Hasta mañana!",
+ mindT:"¿Cómo te sientes?",mindS:"Un chequeo rápido. No se guarda ni se envía nada.",crisis:"En EE. UU., llama o envía un texto al 988 si estás en crisis. Esta app es educativa, no atención médica.",
+ plansT:"Elige tu plan",plansS:"Aprender sigue siendo gratis. Plus quita los límites y apoya el acceso gratuito para otros.",demo:"Precios de demostración. Este prototipo no cobra nada.",
+ free:"Gratis",plus:"Plus",school:"Escuelas y clínicas",mo:"/mes",yr:"/año",bestv:"Mejor valor",cur:"Plan actual",upgrade:"Elegir Plus",manage:"Cancelar Plus",monthly:"Mensual",yearly:"Anual",contact:"Contáctanos",
+ f1:"Todas las lecciones e idiomas",f2:"3 corazones por lección",f3:"Racha diaria y XP",
+ p1:"Todo lo de Gratis",p2:"Corazones ilimitados",p3:"Congelar racha: un día perdido no la reinicia",p4:"Insignia de apoyo",
+ s1:"Cuentas grupales para aulas",s2:"Informes de progreso para docentes",s3:"Materiales traducidos para pacientes",
+ coT:"Pago de demostración",coS:"No se cobra ninguna tarjeta. Solo activa Plus en este dispositivo.",coOk:"Empezar Plus",coNo:"Cancelar",
+ lang:"Idioma",signout:"Cerrar sesión",reset:"Reiniciar progreso",resetQ:"¿Borrar lecciones, XP y racha?",lessonsDone:"Lecciones hechas",total:"XP total",plan:"Plan",member:"Miembro desde",about:"Acerca de Learnology"},
+zh:{tag:"学会你自己<em>健康</em>的语言。",sub:"关于身体、看医生、药物和心理健康的免费游戏化小课程。",
+ signin:"登录",signup:"创建你的资料",name:"姓名",email:"邮箱",pw:"密码",go:"开始",login:"登录",have:"已有账号？",none:"第一次来？",
+ fine:"账号只保存在本设备上。请勿使用其他网站的密码。",errAll:"请填写所有内容。",errPw:"密码至少 6 个字符。",errBad:"邮箱或密码错误。",errTaken:"该邮箱已有账号，请登录。",
+ learn:"学习",mind:"心理",plans:"方案",me:"我的",unit:"单元",start:"开始",next:"继续",check:"检查",correct:"答对了！",wrong:"差一点",answer:"答案：",
+ done:"课程完成！",xp:"获得经验",streak:"连续天数",acc:"正确率",fail:"爱心用完了",failsub:"深呼吸，再试一次这节课。",retry:"再试一次",quit:"退出本课？本课进度将丢失。",
+ matchQ:"把每个词和它的意思配对",welcome:"欢迎",today:"每日目标",goal:"今天完成一节课，保持连续记录。",goalDone:"目标完成，明天见！",
+ mindT:"你现在感觉怎么样？",mindS:"简单的自我检查。不会保存或发送任何内容。",crisis:"在美国，如遇危机请拨打或发短信至 988。本应用仅用于教育，不是医疗服务。",
+ plansT:"选择方案",plansS:"学习始终免费。Plus 取消限制，并帮助更多人免费使用。",demo:"演示价格。本原型不会收取任何费用。",
+ free:"免费",plus:"Plus",school:"学校与诊所",mo:"/月",yr:"/年",bestv:"最划算",cur:"当前方案",upgrade:"选择 Plus",manage:"取消 Plus",monthly:"按月",yearly:"按年",contact:"联系我们",
+ f1:"所有课程和语言",f2:"每节课 3 颗爱心",f3:"每日连续记录和经验",
+ p1:"包含免费版全部内容",p2:"无限爱心",p3:"连续冻结：漏一天不会清零",p4:"支持者徽章",
+ s1:"课堂团体账号",s2:"教师进度报告",s3:"为患者翻译的资料",
+ coT:"演示结账",coS:"不会扣款。这只会在本设备上开启 Plus。",coOk:"开通 Plus",coNo:"取消",
+ lang:"语言",signout:"退出登录",reset:"重置进度",resetQ:"清除所有课程、经验和连续记录？",lessonsDone:"已完成课程",total:"总经验",plan:"方案",member:"加入时间",about:"关于 Learnology"}
 };
-document.querySelectorAll('#moods button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('#moods button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-  $('reply').textContent=R[b.dataset.m];
+
+/* ---------- content ---------- */
+const mc=(a,en,es,zh)=>({t:'mc',a,en,es,zh});           // [question, opt1, opt2, opt3, explanation]
+const mt=(en,es,zh)=>({t:'match',en,es,zh});             // [[term, meaning], ...]
+const UNITS=[
+{c:'u0',name:{en:"Body basics",es:"Lo básico del cuerpo",zh:"身体基础"},desc:{en:"Meet your main organs",es:"Conoce tus órganos principales",zh:"认识主要器官"},lessons:[
+ [mc(1,["What does the heart do?","Digests food","Pumps blood around the body","Filters air","The heart is a muscle that pumps blood to every part of you."],
+        ["¿Qué hace el corazón?","Digiere comida","Bombea sangre por el cuerpo","Filtra el aire","El corazón es un músculo que bombea sangre a todo tu cuerpo."],
+        ["心脏的作用是什么？","消化食物","把血液泵到全身","过滤空气","心脏是一块肌肉，把血液输送到全身。"]),
+  mc(0,["Why do we breathe?","To take in oxygen","To grow hair","To make bones"].concat(["Your lungs bring oxygen into the blood so cells can work."]),
+        ["¿Por qué respiramos?","Para tomar oxígeno","Para que crezca el pelo","Para hacer huesos","Los pulmones llevan oxígeno a la sangre para que las células funcionen."],
+        ["我们为什么要呼吸？","为了吸入氧气","为了长头发","为了生成骨头","肺把氧气送入血液，细胞才能工作。"]),
+  mc(2,["A \"pulse\" is...","Your height","A kind of vitamin","The beat of your heart felt at your wrist or neck","Your pulse tells you how fast your heart is beating."],
+        ["El \"pulso\" es...","Tu estatura","Un tipo de vitamina","El latido del corazón que sientes en la muñeca o el cuello","El pulso indica qué tan rápido late tu corazón."],
+        ["“脉搏”是…","你的身高","一种维生素","在手腕或脖子上感觉到的心跳","脉搏能告诉你心跳有多快。"])],
+ [mt([["Heart","Pumps blood"],["Lungs","Bring in oxygen"],["Bones","Give the body structure"],["Stomach","Digests food"]],
+     [["Corazón","Bombea sangre"],["Pulmones","Traen oxígeno"],["Huesos","Dan estructura al cuerpo"],["Estómago","Digiere la comida"]],
+     [["心脏","泵送血液"],["肺","吸入氧气"],["骨骼","支撑身体"],["胃","消化食物"]]),
+  mc(1,["Which helps keep bones strong?","Skipping meals","Calcium and weight-bearing activity","Sitting all day","Calcium plus activities like walking or jumping help bones stay strong."],
+        ["¿Qué ayuda a mantener fuertes los huesos?","Saltarse comidas","Calcio y actividad con peso","Estar sentado todo el día","El calcio y actividades como caminar o saltar fortalecen los huesos."],
+        ["什么有助于保持骨骼强健？","不吃饭","钙和负重运动","整天坐着","钙加上走路、跳跃等运动能让骨骼更强壮。"])]
+]},
+{c:'u1',name:{en:"At the doctor",es:"En el médico",zh:"看医生"},desc:{en:"Words you will hear in a visit",es:"Palabras que oirás en una consulta",zh:"就诊时会听到的词"},lessons:[
+ [mc(1,["\"Hypertension\" means...","Low blood sugar","High blood pressure","A broken bone","Hyper means too much. Hypertension is blood pressure that stays too high."],
+        ["\"Hipertensión\" significa...","Azúcar baja","Presión arterial alta","Un hueso roto","Hiper significa demasiado. Es presión arterial que se mantiene alta."],
+        ["“高血压”的意思是…","低血糖","血压持续偏高","骨折","Hyper 表示过多，高血压就是血压长期偏高。"]),
+  mc(1,["What is a \"dosage\"?","A type of illness","How much medicine to take, and when","A hospital room","Always follow the dosage on the label or from your pharmacist."],
+        ["¿Qué es la \"dosis\"?","Un tipo de enfermedad","Cuánta medicina tomar y cuándo","Un cuarto de hospital","Sigue siempre la dosis de la etiqueta o de tu farmacéutico."],
+        ["什么是“剂量”？","一种疾病","吃多少药、什么时候吃","病房","请始终按标签或药剂师说明的剂量服用。"]),
+  mc(0,["A \"symptom\" is...","Something you feel that suggests illness","A test machine","A medicine","Symptoms, like a cough or pain, are what you notice and tell the doctor."],
+        ["Un \"síntoma\" es...","Algo que sientes y sugiere enfermedad","Una máquina de pruebas","Una medicina","Síntomas como tos o dolor son lo que notas y le cuentas al médico."],
+        ["“症状”是…","你感觉到的、提示生病的表现","一台检测仪器","一种药","咳嗽、疼痛这类感觉就是症状，要告诉医生。"])],
+ [mt([["Symptom","What you feel is wrong"],["Diagnosis","The name of the illness"],["Prescription","Doctor's order for medicine"],["Allergy","Body overreacts to something harmless"]],
+     [["Síntoma","Lo que sientes que va mal"],["Diagnóstico","El nombre de la enfermedad"],["Receta","Orden del médico para un medicamento"],["Alergia","El cuerpo reacciona a algo inofensivo"]],
+     [["症状","你感觉到的不适"],["诊断","疾病的名称"],["处方","医生开药的单子"],["过敏","身体对无害物质反应过度"]]),
+  mc(2,["Before a visit, it helps to...","Hide your symptoms","Skip your medicines","Write down your questions and symptoms","A short list makes the visit faster and less stressful."],
+        ["Antes de una consulta, ayuda...","Ocultar los síntomas","Dejar las medicinas","Anotar tus preguntas y síntomas","Una lista corta hace la consulta más rápida y tranquila."],
+        ["就诊前，最好…","隐瞒症状","停掉药物","写下你的问题和症状","列个简短清单能让就诊更快、更安心。"])]
+]},
+{c:'u2',name:{en:"Medicines & germs",es:"Medicinas y gérmenes",zh:"药物与病菌"},desc:{en:"What helps, and what doesn't",es:"Qué ayuda y qué no",zh:"什么有用，什么没用"},lessons:[
+ [mc(1,["Antibiotics treat...","Viruses like the flu","Bacterial infections","Allergies","Antibiotics kill bacteria. They do not work on viruses."],
+        ["Los antibióticos tratan...","Virus como la gripe","Infecciones bacterianas","Alergias","Los antibióticos matan bacterias. No funcionan contra virus."],
+        ["抗生素用于治疗…","流感等病毒","细菌感染","过敏","抗生素杀灭细菌，对病毒无效。"]),
+  mc(0,["A vaccine helps your body...","Practice fighting a germ safely","Skip sleeping","Digest food","Vaccines train your immune system before the real germ shows up."],
+        ["Una vacuna ayuda a tu cuerpo a...","Practicar cómo combatir un germen sin riesgo","Dormir menos","Digerir comida","Las vacunas entrenan tu sistema inmune antes de que llegue el germen real."],
+        ["疫苗能帮助身体…","安全地练习对抗病菌","少睡觉","消化食物","疫苗让免疫系统在真正的病菌到来前先训练。"]),
+  mc(2,["Best first step for a mild fever?","Double your medicine","Ignore it for a week","Rest, drink fluids, and call a clinic if it is high or lasts","Fluids and rest help. Seek care for a very high or lasting fever."],
+        ["¿Primer paso para una fiebre leve?","Duplicar la medicina","Ignorarla una semana","Descansar, tomar líquidos y llamar a la clínica si es alta o dura","Líquidos y descanso ayudan. Busca atención si la fiebre es muy alta o dura."],
+        ["轻微发烧的第一步是？","把药加倍","不管它一周","休息、多喝水；如果很高或持续就联系诊所","休息和补水有帮助。高烧或持续不退要就医。"])],
+ [mt([["Virus","Germ that antibiotics can't kill"],["Bacteria","Germ that antibiotics can kill"],["Immune system","Your body's defense"],["Side effect","Unwanted reaction to a medicine"]],
+     [["Virus","Germen que los antibióticos no matan"],["Bacteria","Germen que los antibióticos matan"],["Sistema inmune","La defensa de tu cuerpo"],["Efecto secundario","Reacción no deseada a una medicina"]],
+     [["病毒","抗生素杀不死的病原体"],["细菌","抗生素能杀死的病原体"],["免疫系统","身体的防御系统"],["副作用","药物的不良反应"]]),
+  mc(0,["You feel better halfway through a prescription. You should...","Finish it as directed, or ask your doctor first","Stop right away","Share the rest","Stopping early can let the infection return. Ask before changing a prescription."],
+        ["Te sientes mejor a la mitad de la receta. Debes...","Terminarla como se indicó o preguntar al médico","Dejarla de inmediato","Compartir el resto","Parar antes puede dejar volver la infección. Pregunta antes de cambiar una receta."],
+        ["吃到一半感觉好多了，你应该…","按医嘱吃完，或先问医生","立刻停药","把剩下的给别人","提前停药可能让感染复发。改变处方前先询问。"])]
+]},
+{c:'u3',name:{en:"Mind & mood",es:"Mente y ánimo",zh:"心理与情绪"},desc:{en:"Notice it, name it, get help",es:"Nótalo, nómbralo, pide ayuda",zh:"察觉、命名、求助"},lessons:[
+ [mc(1,["Feeling anxious often is...","Something to hide","Common, and help is available","Never serious","Anxiety is common and treatable. Talking to someone is a strong first step."],
+        ["Sentir ansiedad con frecuencia es...","Algo que ocultar","Común, y hay ayuda disponible","Nunca grave","La ansiedad es común y tratable. Hablar con alguien es un buen primer paso."],
+        ["经常感到焦虑…","应该隐藏","很常见，也有帮助可用","从不严重","焦虑很常见，也可以治疗。和人聊聊是很好的第一步。"]),
+  mc(2,["Loneliness and mental health...","Are unrelated","Only affect older people","Affect each other","Isolation can worsen mood, and low mood can push people to withdraw."],
+        ["La soledad y la salud mental...","No tienen relación","Solo afectan a mayores","Se afectan entre sí","El aislamiento puede empeorar el ánimo, y el ánimo bajo lleva a aislarse."],
+        ["孤独与心理健康…","毫无关系","只影响老年人","会互相影响","孤立会让情绪变差，情绪低落又会让人更想退缩。"]),
+  mc(0,["Which habit supports mood?","Regular sleep and some movement","Skipping sleep to study","Avoiding every person","Sleep, movement and connection all support mental health."],
+        ["¿Qué hábito ayuda al ánimo?","Dormir regular y moverte un poco","Dejar de dormir para estudiar","Evitar a todos","Dormir, moverte y conectar con otros ayudan a la salud mental."],
+        ["哪种习惯有助于情绪？","规律睡眠和适度运动","熬夜学习","躲开所有人","睡眠、运动和人际联系都有益心理健康。"])],
+ [mt([["Stress","Body's reaction to pressure"],["Anxiety","Worry that keeps coming back"],["Depression","Low mood that lasts for weeks"],["Therapy","Talking with a trained professional"]],
+     [["Estrés","Reacción del cuerpo a la presión"],["Ansiedad","Preocupación que vuelve una y otra vez"],["Depresión","Ánimo bajo que dura semanas"],["Terapia","Hablar con un profesional capacitado"]],
+     [["压力","身体对压力的反应"],["焦虑","反复出现的担忧"],["抑郁","持续数周的情绪低落"],["心理治疗","与专业人员交谈"]]),
+  mc(1,["A friend says they feel hopeless. Best response?","Change the subject","Listen, take it seriously, and help them reach support","Tell them to cheer up","If they mention self-harm, call or text 988 (U.S.) or local emergency services."],
+        ["Un amigo dice que se siente sin esperanza. ¿Mejor respuesta?","Cambiar de tema","Escuchar, tomarlo en serio y ayudarle a buscar apoyo","Decirle que se anime","Si menciona hacerse daño, llama o escribe al 988 (EE. UU.) o a emergencias."],
+        ["朋友说感到绝望，最好的回应是？","转移话题","认真倾听，帮助对方寻求支持","叫他开心点","如果提到自伤，请拨打或发短信至 988（美国）或当地急救电话。"])]
+]}
+];
+const LESSONS=[];UNITS.forEach((u,ui)=>u.lessons.forEach((qs,li)=>LESSONS.push({id:ui+'-'+li,ui,li,qs})));
+
+const MOODS={good:{en:"Good",es:"Bien",zh:"不错"},ok:{en:"Okay",es:"Regular",zh:"一般"},low:{en:"Low",es:"Decaído",zh:"低落"},anx:{en:"Anxious",es:"Ansioso",zh:"焦虑"},lonely:{en:"Lonely",es:"Solo",zh:"孤独"}};
+const REPLY={
+good:{en:"Great. Keep it going: a short walk, some water, and a message to someone you like are small habits that stick.",es:"Qué bien. Sigue así: una caminata corta, agua y un mensaje a alguien que quieres son hábitos pequeños que se quedan.",zh:"很好。继续保持：短暂散步、喝点水、给喜欢的人发条消息，这些小习惯很有用。"},
+ok:{en:"Okay is fine. Name one thing that would make today a bit better, then do just that.",es:"Estar regular está bien. Nombra una cosa que mejore un poco tu día y hazla.",zh:"一般也没关系。想一件能让今天好一点的小事，然后去做。"},
+low:{en:"Low days happen. Rest, eat something, and tell one person. If it lasts more than two weeks, talk to a doctor or counselor.",es:"Hay días bajos. Descansa, come algo y cuéntaselo a alguien. Si dura más de dos semanas, habla con un médico o consejero.",zh:"低落的日子会有。休息、吃点东西、告诉一个人。如果持续超过两周，请找医生或咨询师。"},
+anx:{en:"Try this: breathe in for 4, hold for 4, out for 6, five times. If worry keeps coming back, a clinician can help.",es:"Prueba: inhala 4, sostén 4, exhala 6, cinco veces. Si la preocupación vuelve, un profesional puede ayudar.",zh:"试试：吸气 4 秒，屏住 4 秒，呼气 6 秒，重复五次。如果担忧反复出现，专业人员可以帮忙。"},
+lonely:{en:"Reach out to one person today, even with a short text. Peer support can help too. If you feel unsafe, call or text 988.",es:"Contacta a una persona hoy, aunque sea con un mensaje corto. El apoyo entre pares también ayuda. Si no te sientes seguro, llama o escribe al 988.",zh:"今天联系一个人吧，哪怕只是一条短信。同伴支持也有帮助。如果感到不安全，请拨打或发短信至 988。"}};
+
+/* ---------- state ---------- */
+let SESS=store.get('lg:session',null);   // {email}
+let P=null;
+const lang0=store.get('lg:lang','en');
+function loadProfile(){P=store.get('lg:p:'+SESS.email,null)}
+function save(){store.set('lg:p:'+SESS.email,P)}
+const L=()=>(P&&P.lang)||store.get('lg:lang',lang0);
+const t=k=>(UI[L()]||UI.en)[k]??UI.en[k];
+const T=o=>o[L()]||o.en;
+const isPlus=()=>P.plan==='plus';
+function curStreak(){if(!P.last)return 0;const d=daysBetween(P.last,day());return d<=1||(d===2&&isPlus())?P.streak:0}
+function doneCount(){return Object.keys(P.done).length}
+function currentIdx(){const i=LESSONS.findIndex(l=>!P.done[l.id]);return i<0?LESSONS.length:i}
+
+/* ---------- router ---------- */
+window.addEventListener('hashchange',route);
+function route(){
+  document.documentElement.lang=({en:'en',es:'es',zh:'zh'})[L()];
+  if(!SESS||!P){renderAuth();return}
+  const h=location.hash.replace('#/','')||'learn';
+  if(h.startsWith('lesson/'))return startLesson(h.slice(7));
+  if(h==='mind')return renderMind();
+  if(h==='plans')return renderPlans();
+  if(h==='me')return renderMe();
+  renderLearn();
+}
+
+/* ---------- auth ---------- */
+let authMode='up';
+function renderAuth(){
+  const l=store.get('lg:lang',lang0);
+  document.documentElement.lang=l;
+  const U=UI[l];
+  app.innerHTML=`<div class="auth">
+  <div class="auth-l"><a class="logo" href="/">Learn<b>ology</b></a>
+    <div><h1>${U.tag}</h1><p>${U.sub}</p><div class="chips" aria-hidden="true"><span>Hypertension</span><span>Vacuna</span><span>血压</span><span>Antibiotic</span></div></div>
+    <a href="about.html" style="color:#fff;opacity:.85;font-size:14px">${U.about}</a></div>
+  <div class="auth-r"><div class="form">
+    <div class="lang-pick"><select id="al" aria-label="${U.lang}"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></div>
+    <h2>${authMode==='up'?U.signup:U.signin}</h2>
+    <form id="af" novalidate>
+      ${authMode==='up'?`<label for="n">${U.name}</label><input id="n" autocomplete="name">`:''}
+      <label for="e">${U.email}</label><input id="e" type="email" autocomplete="email">
+      <label for="p">${U.pw}</label><input id="p" type="password" autocomplete="${authMode==='up'?'new-password':'current-password'}">
+      <div class="err" id="er" role="alert"></div>
+      <button class="btn block" type="submit">${authMode==='up'?U.go:U.login}</button>
+    </form>
+    <div class="swap">${authMode==='up'?U.have:U.none} <button id="sw">${authMode==='up'?U.signin:U.signup}</button></div>
+    <p class="fine">${U.fine}</p>
+  </div></div></div>`;
+  $('#al').value=l;
+  $('#al').onchange=e=>{store.set('lg:lang',e.target.value);renderAuth()};
+  $('#sw').onclick=()=>{authMode=authMode==='up'?'in':'up';renderAuth()};
+  $('#af').onsubmit=async ev=>{
+    ev.preventDefault();
+    const email=$('#e').value.trim().toLowerCase(),pw=$('#p').value,name=$('#n')?$('#n').value.trim():'';
+    const er=m=>$('#er').textContent=m;
+    if(!email||!pw||(authMode==='up'&&!name))return er(U.errAll);
+    if(pw.length<6&&authMode==='up')return er(U.errPw);
+    const acc=store.get('lg:accounts',{});
+    const h=await hash(pw,email);
+    if(authMode==='up'){
+      if(acc[email])return er(U.errTaken);
+      acc[email]=h;store.set('lg:accounts',acc);
+      store.set('lg:p:'+email,{name,lang:l,xp:0,streak:0,last:'',done:{},plan:'free',joined:day()});
+    }else if(acc[email]!==h)return er(U.errBad);
+    SESS={email};store.set('lg:session',SESS);loadProfile();
+    if(!P){P={name:email,lang:l,xp:0,streak:0,last:'',done:{},plan:'free',joined:day()};save()}
+    location.hash='#/learn';route();
+  };
+}
+
+/* ---------- shell ---------- */
+function statsHTML(){
+  return `<div class="stats"><span class="stat s" title="${t('streak')}">🔥 ${curStreak()}</span><span class="stat x" title="XP">⚡ ${P.xp}</span><span class="stat h" title="Hearts">❤ ${isPlus()?'∞':3}</span></div>`;
+}
+function shell(active,inner){
+  const nav=[['learn','🏠',t('learn')],['mind','🧠',t('mind')],['plans','⭐',t('plans')],['me','👤',t('me')]];
+  const goalDone=P.last===day();
+  app.innerHTML=`<div class="shell">
+   <aside class="side"><a class="logo" href="#/learn">Learn<b>ology</b></a><nav class="nav" aria-label="Main">${nav.map(n=>`<a href="#/${n[0]}" class="${active===n[0]?'on':''}"><i>${n[1]}</i>${n[2]}</a>`).join('')}</nav></aside>
+   <main class="main"><div class="topstats">${statsHTML()}</div>${inner}</main>
+   <aside class="rail">${statsHTML()}
+     <div class="card"><h3>${t('today')}</h3><p>${goalDone?t('goalDone'):t('goal')}</p></div>
+     ${isPlus()?'':`<div class="card"><h3>Learnology <span class="plus">Plus</span></h3><p>${t('p2')}</p><a class="btn sun block" href="#/plans">${t('upgrade')}</a></div>`}
+   </aside>
+   <nav class="tabs-m" aria-label="Main">${nav.map(n=>`<a href="#/${n[0]}" class="${active===n[0]?'on':''}"><i>${n[1]}</i>${n[2]}</a>`).join('')}</nav></div>`;
+  window.scrollTo(0,0);
+}
+
+/* ---------- learn path ---------- */
+function renderLearn(){
+  const cur=currentIdx();let html='';
+  UNITS.forEach((u,ui)=>{
+    html+=`<div class="unit ${u.c}"><div><div class="tag">${t('unit')} ${ui+1}</div><h2>${T(u.name)}</h2><p>${T(u.desc)}</p></div></div><div class="pathcol">`;
+    LESSONS.filter(l=>l.ui===ui).forEach(l=>{
+      const idx=LESSONS.indexOf(l),done=P.done[l.id],isCur=idx===cur,locked=idx>cur;
+      const off=[0,46,64,30,-30,-56][ (l.li+ui*2)%6 ];
+      html+=`<button class="node ${isCur?'cur':''}" style="--c:var(--${['green','coral','blue','green'][ui]});--cd:var(--${['green','coral','blue','green'][ui]}-d,var(--green-d));transform:translateX(${off}px)" ${locked?'disabled':''} data-l="${l.id}" aria-label="${T(u.name)} ${l.li+1}">${done?'✓':l.li+1}</button>`;
+    });
+    html+=`</div>`;
+  });
+  shell('learn',`<h1 style="font-size:30px;margin:0 0 16px">${t('welcome')}, ${esc(P.name.split(' ')[0])}</h1>${html}`);
+  document.querySelectorAll('.node').forEach(b=>b.onclick=()=>location.hash='#/lesson/'+b.dataset.l);
+  const c=$('.node.cur');if(c)c.scrollIntoView({block:'center'});
+}
+
+/* ---------- lesson ---------- */
+let LS=null;
+function startLesson(id){
+  const les=LESSONS.find(l=>l.id===id);if(!les){location.hash='#/learn';return}
+  const qs=les.qs.map(q=>{
+    if(q.t==='mc'){const d=q[L()],opts=d.slice(1,4);const order=shuffle([0,1,2]);return {t:'mc',q:d[0],opts:order.map(i=>opts[i]),a:order.indexOf(q.a),e:d[4],asked:0}}
+    const pairs=q[L()];return {t:'match',pairs,asked:0};
+  });
+  LS={les,queue:qs,total:qs.length,hearts:isPlus()?Infinity:3,mistakes:0,state:'ask',sel:null,m:null};
+  drawLesson();
+}
+function lessonFrame(body,bar){
+  const pct=Math.round((LS.total-LS.queue.length)/LS.total*100);
+  app.innerHTML=`<div class="lesson"><div class="ltop"><button class="x" id="qx" aria-label="Close">×</button><div class="prog" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100"><i style="width:${pct}%"></i></div><span class="hearts">❤ ${LS.hearts===Infinity?'∞':LS.hearts}</span></div><div class="lbody">${body}</div>${bar}</div>`;
+  $('#qx').onclick=()=>{if(confirm(t('quit')))location.hash='#/learn'};
+}
+function drawLesson(){
+  if(LS.hearts<=0)return failScreen();
+  if(!LS.queue.length)return finishLesson();
+  const q=LS.queue[0];
+  if(q.t==='mc'){
+    const body=`<h2>${esc(q.q)}</h2><div class="opts">${q.opts.map((o,i)=>`<button class="opt ${LS.sel===i?'sel':''}" data-i="${i}"><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>`;
+    lessonFrame(body,`<div class="lbar"><div><span></span><button class="btn" id="ck" ${LS.sel==null?'disabled':''}>${t('check')}</button></div></div>`);
+    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{LS.sel=+b.dataset.i;drawLesson()});
+    $('#ck').onclick=checkMC;
+  }else{
+    if(!LS.m){LS.m={L:shuffle(q.pairs.map((p,i)=>[i,p[0]])),R:shuffle(q.pairs.map((p,i)=>[i,p[1]])),sel:null,gone:new Set(),bad:null}}
+    const m=LS.m,all=m.gone.size===q.pairs.length;
+    const col=(arr,side)=>arr.map(([i,txt])=>`<button class="opt ${m.gone.has(i)?'gone':''} ${m.sel&&m.sel.side===side&&m.sel.i===i?'sel':''} ${m.bad&&m.bad.side===side&&m.bad.i===i?'wrong':''}" data-s="${side}" data-i="${i}">${esc(txt)}</button>`).join('');
+    const body=`<h2>${t('matchQ')}</h2><div class="match"><div class="opts">${col(m.L,'L')}</div><div class="opts">${col(m.R,'R')}</div></div>`;
+    lessonFrame(body,all?`<div class="lbar ok"><div><div class="fb"><b>${t('correct')}</b></div><button class="btn" id="nx">${t('next')}</button></div></div>`:`<div class="lbar"><div><span></span><button class="btn" disabled>${t('check')}</button></div></div>`);
+    if(all)$('#nx').onclick=()=>{LS.queue.shift();LS.m=null;drawLesson()};
+    document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>matchTap(b.dataset.s,+b.dataset.i,q));
+  }
+}
+function matchTap(side,i,q){
+  const m=LS.m;m.bad=null;
+  if(!m.sel||m.sel.side===side){m.sel={side,i};return drawLesson()}
+  const a=m.sel.side==='L'?m.sel.i:i,b=m.sel.side==='L'?i:m.sel.i;
+  if(a===b){m.gone.add(a);m.sel=null}
+  else{LS.hearts--;LS.mistakes++;m.bad={side,i};m.sel=null}
+  drawLesson();
+}
+function checkMC(){
+  const q=LS.queue[0],good=LS.sel===q.a;
+  const body=`<h2>${esc(q.q)}</h2><div class="opts">${q.opts.map((o,i)=>`<button class="opt ${i===q.a?'right':(i===LS.sel?'wrong':'')}" disabled><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>`;
+  if(!good){LS.hearts--;LS.mistakes++}
+  lessonFrame(body,`<div class="lbar ${good?'ok':'bad'}"><div><div class="fb"><b>${good?t('correct'):t('wrong')}</b><span>${good?'':t('answer')+' '+esc(q.opts[q.a])+'. '}${esc(q.e)}</span></div><button class="btn ${good?'':'coral'}" id="nx">${t('next')}</button></div></div>`);
+  $('#nx').focus();
+  $('#nx').onclick=()=>{LS.queue.shift();if(!good)LS.queue.push(q);LS.sel=null;drawLesson()};
+}
+document.addEventListener('keydown',e=>{
+  if(!LS||!document.querySelector('.lesson'))return;
+  if(['1','2','3'].includes(e.key)&&document.querySelector('.opt:not(:disabled)')&&LS.queue[0]&&LS.queue[0].t==='mc'&&!document.querySelector('.lbar.ok,.lbar.bad')){LS.sel=+e.key-1;drawLesson()}
+  if(e.key==='Enter'){const b=$('#ck:not(:disabled)')||$('#nx')||$('#rt');if(b){e.preventDefault();b.click()}}
 });
+function failScreen(){
+  app.innerHTML=`<div class="lesson"><div class="lbody"><div class="center"><div style="font-size:64px">💔</div><h1>${t('fail')}</h1><p class="sub">${t('failsub')}</p><button class="btn block" id="rt">${t('retry')}</button><p style="margin-top:14px"><a href="#/learn">${t('learn')}</a></p></div></div></div>`;
+  $('#rt').onclick=()=>startLesson(LS.les.id);
+}
+function finishLesson(){
+  const first=!P.done[LS.les.id];
+  const xp=(first?15:5)+(LS.mistakes===0?5:0);
+  const today=day();
+  if(P.last!==today){const d=P.last?daysBetween(P.last,today):99;P.streak=(d===1||(d===2&&isPlus()))?P.streak+1:1;P.last=today}
+  P.xp+=xp;P.done[LS.les.id]=true;save();
+  const acc=Math.max(0,Math.round(100*LS.total/(LS.total+LS.mistakes)));
+  app.innerHTML=`<div class="lesson"><div class="lbody"><div class="center"><div style="font-size:64px">🎉</div><h1>${t('done')}</h1>
+   <div class="big"><div><b>⚡ ${xp}</b><small>${t('xp')}</small></div><div><b>🔥 ${P.streak}</b><small>${t('streak')}</small></div><div><b>${acc}%</b><small>${t('acc')}</small></div></div>
+   <button class="btn block" id="rt">${t('next')}</button></div></div></div>`;
+  $('#rt').onclick=()=>{LS=null;location.hash='#/learn'};
+}
+
+/* ---------- mind ---------- */
+function renderMind(){
+  shell('mind',`<div class="page"><h1>${t('mindT')}</h1><p class="sub">${t('mindS')}</p>
+   <div class="moods" id="mo" role="group">${Object.keys(MOODS).map(k=>`<button data-m="${k}" aria-pressed="false">${T(MOODS[k])}</button>`).join('')}</div>
+   <div class="reply" id="rp">…</div><p class="note">${t('crisis')}</p></div>`);
+  document.querySelectorAll('#mo button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#mo button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    $('#rp').textContent=T(REPLY[b.dataset.m]);
+  });
+}
+
+/* ---------- plans ---------- */
+let bill='yearly';
+function renderPlans(){
+  const price=bill==='yearly'?['$39.99',t('yr')]:['$4.99',t('mo')];
+  shell('plans',`<div class="page"><h1>${t('plansT')}</h1><p class="sub">${t('plansS')}</p>
+   <div class="moods" role="group"><button data-b="monthly" aria-pressed="${bill==='monthly'}">${t('monthly')}</button><button data-b="yearly" aria-pressed="${bill==='yearly'}">${t('yearly')}</button></div>
+   <div class="plans">
+    <div class="plan"><h3>${t('free')}</h3><div class="price">$0</div><ul><li>${t('f1')}</li><li>${t('f2')}</li><li>${t('f3')}</li></ul>
+      <button class="btn ghost" disabled>${isPlus()?t('free'):t('cur')}</button></div>
+    <div class="plan best" data-badge="${t('bestv')}"><h3>${t('plus')}</h3><div class="price">${price[0]}<small>${price[1]}</small></div><ul><li>${t('p1')}</li><li>${t('p2')}</li><li>${t('p3')}</li><li>${t('p4')}</li></ul>
+      ${isPlus()?`<button class="btn ghost" id="cancel">${t('manage')}</button>`:`<button class="btn coral" id="up">${t('upgrade')}</button>`}</div>
+    <div class="plan"><h3>${t('school')}</h3><div class="price" style="font-size:28px">Custom</div><ul><li>${t('s1')}</li><li>${t('s2')}</li><li>${t('s3')}</li></ul>
+      <a class="btn ghost" href="mailto:hello@learnology.example">${t('contact')}</a></div>
+   </div><p class="note">${t('demo')}</p></div>`);
+  document.querySelectorAll('[data-b]').forEach(b=>b.onclick=()=>{bill=b.dataset.b;renderPlans()});
+  const up=$('#up');if(up)up.onclick=()=>{
+    const m=document.createElement('div');m.className='modal';m.innerHTML=`<div role="dialog" aria-modal="true"><h3>${t('coT')}</h3><p>${t('plus')} · ${price[0]}${price[1]}</p><p class="sub">${t('coS')}</p><div class="acts"><button class="btn ghost" id="mn">${t('coNo')}</button><button class="btn coral" id="my">${t('coOk')}</button></div></div>`;
+    document.body.appendChild(m);$('#my').focus();
+    $('#mn').onclick=()=>m.remove();
+    $('#my').onclick=()=>{P.plan='plus';save();m.remove();renderPlans()};
+  };
+  const c=$('#cancel');if(c)c.onclick=()=>{P.plan='free';save();renderPlans()};
+}
+
+/* ---------- profile ---------- */
+function renderMe(){
+  shell('me',`<div class="page"><h1>${esc(P.name)} ${isPlus()?'<span class="plus">Plus</span>':''}</h1><p class="sub">${esc(SESS.email)}</p>
+   <div class="card">
+    <div class="row"><span>${t('lessonsDone')}</span><b>${doneCount()}/${LESSONS.length}</b></div>
+    <div class="row"><span>${t('total')}</span><b>${P.xp}</b></div>
+    <div class="row"><span>${t('streak')}</span><b>${curStreak()}</b></div>
+    <div class="row"><span>${t('plan')}</span><b>${isPlus()?t('plus'):t('free')}</b></div>
+    <div class="row"><span>${t('member')}</span><b>${esc(P.joined||'')}</b></div>
+    <div class="row"><span>${t('lang')}</span><select id="pl"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></div>
+   </div>
+   <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn ghost" id="so">${t('signout')}</button><button class="btn ghost" id="rs">${t('reset')}</button></div>
+   <p class="note"><a href="about.html">${t('about')}</a></p></div>`);
+  $('#pl').value=P.lang;
+  $('#pl').onchange=e=>{P.lang=e.target.value;store.set('lg:lang',P.lang);save();route()};
+  $('#so').onclick=()=>{store.set('lg:session',null);SESS=null;P=null;location.hash='';route()};
+  $('#rs').onclick=()=>{if(confirm(t('resetQ'))){P.xp=0;P.streak=0;P.last='';P.done={};save();location.hash='#/learn';route()}};
+}
+
+/* ---------- boot ---------- */
+if(SESS){loadProfile();if(!P){SESS=null}}
+route();
 </script>
 </body>
 </html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Learnology</title>
+<meta name="description" content="Learn the language of your own health. Bite-size health and medical literacy lessons in many languages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--ink:#17332b;--muted:#5b6f67;--card:#fffdf8;--line:#ddd5c3;--green:#1f6f54;--green-d:#14503c;--coral:#e4572e;--sun:#f2b84b;--ok:#1f6f54;--bad:#b3341b}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#10201b;--ink:#eee8da;--muted:#9fb3aa;--card:#172a24;--line:#2c443b;--green:#56b58f;--green-d:#7fd1ad;--coral:#ff7a50;--sun:#f2b84b;--ok:#7fd1ad;--bad:#ff8f77}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.08;margin:0}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:12px;flex-wrap:wrap}
+.logo{font:800 26px Fraunces,serif;text-decoration:none;letter-spacing:-.5px}
+.logo b{color:var(--coral)}
+nav{display:flex;gap:18px;font-weight:500;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+.hero{padding:48px 0 56px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800;letter-spacing:-1.5px}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero p{font-size:20px;color:var(--muted);max-width:30em;margin:20px 0 28px}
+.btn{display:inline-block;background:var(--green);color:#fff;border:0;border-radius:10px;padding:13px 22px;font:700 16px Figtree,sans-serif;cursor:pointer;text-decoration:none;box-shadow:0 4px 0 var(--green-d);transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.words{display:flex;flex-wrap:wrap;gap:10px}
+.words span{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 16px;font:600 22px Fraunces,serif}
+.words span small{display:block;font:500 13px Figtree,sans-serif;color:var(--muted)}
+.words span:nth-child(2n){transform:rotate(-2deg)}.words span:nth-child(3n){transform:rotate(2deg);background:var(--sun);color:#17332b;border-color:#17332b}
+.words span:nth-child(3n) small{color:#4b4220}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(30px,4.4vw,46px);margin-bottom:10px;letter-spacing:-.8px}
+.lead{color:var(--muted);max-width:40em;margin:0 0 28px}
+/* lesson */
+.lesson{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px;max-width:680px}
+.bar{display:flex;gap:14px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.prog{flex:1;min-width:120px;height:12px;background:var(--line);border-radius:6px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.stat{font-weight:700;font-size:15px}
+select{font:500 15px Figtree,sans-serif;padding:7px 10px;border-radius:8px;border:2px solid var(--line);background:var(--bg);color:var(--ink)}
+.q{font:700 26px Fraunces,serif;margin:6px 0 16px}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 16px;font:500 17px Figtree,sans-serif;color:var(--ink);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--green)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--bg))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--bg))}
+.fb{min-height:52px;margin:14px 0 4px;font-size:16px}
+.fb b{display:block}
+.done{text-align:center;padding:18px 0}
+.done h3{font-size:34px;margin-bottom:8px}
+/* checkin */
+.moods{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.moods button{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:12px 16px;font:600 16px Figtree,sans-serif;color:var(--ink);cursor:pointer}
+.moods button[aria-pressed=true]{border-color:var(--coral);background:color-mix(in srgb,var(--coral) 14%,var(--card))}
+.reply{background:var(--card);border-left:5px solid var(--coral);border-radius:0 12px 12px 0;padding:16px 18px;max-width:640px;min-height:60px}
+.note{font-size:14px;color:var(--muted);margin-top:14px;max-width:640px}
+/* grids */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:2px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card)}
+.grid>div{padding:22px;border-right:2px solid var(--line);border-bottom:2px solid var(--line);margin:-1px -1px 0 0}
+.grid h3{font-size:22px;margin-bottom:6px}
+.grid p{margin:0;color:var(--muted);font-size:15.5px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--line);border-radius:12px;overflow:hidden;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 13px Figtree;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr.us td{background:color-mix(in srgb,var(--green) 12%,var(--card));font-weight:700}
+.tbl{overflow-x:auto}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.tl div{border-top:5px solid var(--coral);padding-top:10px}
+.tl b{font:700 20px Fraunces,serif;display:block}
+.tl p{margin:4px 0 0;color:var(--muted);font-size:15px}
+footer{padding:36px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:24px}nav{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="logo" href="/">Learn<b>ology</b></a>
+  <nav><a href="#try">Try a lesson</a><a href="#checkin">Check-in</a><a href="#why">Why</a><a href="#market">Market</a><a href="#model">Business model</a></nav>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>Learn the <em>language</em> of your own health.</h1>
+    <p>Short, game-style lessons on medical terms, conditions and mental health, in the language you actually speak. Like Duolingo, but for understanding your body.</p>
+    <a class="btn" href="/">Open the app</a> <a class="btn ghost" href="#why">Why we built it</a>
+  </div>
+  <div class="words" aria-hidden="true">
+    <span>Hypertension<small>high blood pressure</small></span>
+    <span>Antibiotic<small>kills bacteria</small></span>
+    <span>血压<small>blood pressure</small></span>
+    <span>Anxiety<small>ansiedad · 焦虑</small></span>
+    <span>Vaccine<small>vacuna · 疫苗</small></span>
+  </div>
+</div>
+</div>
+
+<section id="try"><div class="wrap">
+  <h2>Try a lesson</h2>
+  <p class="lead">Five questions. Pick a language and the whole lesson switches. Wrong answers teach you something too.</p>
+  <div class="lesson" id="lesson" aria-live="polite">
+    <div class="bar">
+      <div class="prog" role="progressbar" aria-label="Lesson progress"><i id="prog"></i></div>
+      <span class="stat">⚡ <span id="xp">0</span> XP</span>
+      <label class="stat">Language <select id="lang"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></label>
+    </div>
+    <div id="card"></div>
+  </div>
+</div></section>
+
+<section id="checkin"><div class="wrap">
+  <h2>Daily check-in</h2>
+  <p class="lead">Learnology also helps you notice how you feel and what to do next. How are you today?</p>
+  <div class="moods" id="moods" role="group" aria-label="Mood">
+    <button data-m="good" aria-pressed="false">Good</button>
+    <button data-m="ok" aria-pressed="false">Okay</button>
+    <button data-m="low" aria-pressed="false">Low</button>
+    <button data-m="anx" aria-pressed="false">Anxious</button>
+    <button data-m="lonely" aria-pressed="false">Lonely</button>
+  </div>
+  <div class="reply" id="reply">Pick one. Nothing is saved or sent anywhere.</div>
+  <p class="note">If you are in crisis in the U.S., call or text <b>988</b> (Suicide &amp; Crisis Lifeline). This is an education tool, not medical care.</p>
+</div></section>
+
+<section id="why"><div class="wrap">
+  <h2>The problem</h2>
+  <p class="lead">People can't act on what they can't understand, and many of us only find out too late.</p>
+  <div class="grid">
+    <div><h3>Language barriers</h3><p>Patients who don't share a language with their provider struggle to follow instructions, and translation apps give words, not understanding.</p></div>
+    <div><h3>Low health literacy</h3><p>Terms like "hypertension" or "dosage" are never taught in school, so people skip visits or stop treatment.</p></div>
+    <div><h3>Mental health and isolation</h3><p>Suicide rates have risen over the past decade despite more resources. Loneliness and poor mental health feed each other.</p></div>
+    <div><h3>Hard-to-reach groups</h3><p>Older adults often see doctor visits as too troublesome. Kids get no early, friendly introduction to their own bodies.</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <h2>How it works</h2>
+  <p class="lead">One-sentence solution: a free, multilingual, game-based platform that teaches health and medical literacy to every age.</p>
+  <div class="grid">
+    <div><h3>Bite-size games</h3><p>Streaks, XP and short quizzes on basic terms, illnesses and conditions.</p></div>
+    <div><h3>Videos in many languages</h3><p>Playful clips for kids (think GoNoodle) and more mature ones for adults.</p></div>
+    <div><h3>Mental health awareness</h3><p>Learn the signs, name what you feel, and know the next step.</p></div>
+    <div><h3>Ready for the visit</h3><p>Learn the words before the appointment so check-in is faster and less scary.</p></div>
+  </div>
+</div></section>
+
+<section id="market"><div class="wrap">
+  <h2>Competitors</h2>
+  <p class="lead">Our real competitors are the tools people already use to cope: search engines, translation apps, and social media. Figures to be sourced before submission.</p>
+  <div class="tbl"><table>
+    <tr><th>Option</th><th>What it does</th><th>Gap</th></tr>
+    <tr><td>Google / Google Translate</td><td>Instant answers and word-for-word translation</td><td>No structure, no retention, no context</td></tr>
+    <tr><td>WebMD, Healthline</td><td>Symptom and condition articles</td><td>Reading-heavy, mostly English, not engaging</td></tr>
+    <tr><td>Duolingo</td><td>Gamified language learning</td><td>No health content</td></tr>
+    <tr><td>Therapy and peer-support apps</td><td>Counseling, community</td><td>Cost, waitlists, limited languages</td></tr>
+    <tr class="us"><td>Learnology</td><td>Gamified health literacy in many languages</td><td>Combines all three gaps</td></tr>
+  </table></div>
+</div></section>
+
+<section id="model"><div class="wrap">
+  <h2>Business model</h2>
+  <p class="lead">Free to learn. Funded by mission-aligned partners so cost never blocks access.</p>
+  <div class="grid">
+    <div><h3>Free tier with ads</h3><p>Core lessons stay free. Ad-free paid plan for families and schools.</p></div>
+    <div><h3>Grants and government</h3><p>Public health and suicide-prevention funding.</p></div>
+    <div><h3>Sponsorships</h3><p>Health systems and insurers sponsoring language packs.</p></div>
+    <div><h3>School partnerships</h3><p>Talks and classroom use as the first distribution channel.</p></div>
+  </div>
+  <h2 style="margin-top:44px;font-size:30px">Roadmap</h2>
+  <div class="tl" style="margin-top:16px">
+    <div><b>Now</b><p>Prototype, interview 5-10 real users</p></div>
+    <div><b>Year 1</b><p>3 languages, school pilots, first grant</p></div>
+    <div><b>Year 2</b><p>Adult and senior tracks, sponsors</p></div>
+    <div><b>Year 3</b><p>10+ languages, clinic partnerships</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Learnology is a student business-plan prototype. Content is educational and not medical advice.</div></footer>
+
+<script>
+const T={
+en:{lbl:"Question",ok:"Correct!",no:"Not quite.",next:"Next",fin:"Finish",done:"Lesson complete",score:"You earned",again:"Play again",
+Q:[
+{q:"What does \"hypertension\" mean?",o:["Low blood sugar","High blood pressure","A fast heartbeat"],a:1,e:"Hyper means too much. Hypertension is blood pressure that stays too high."},
+{q:"Antibiotics are used to treat...",o:["Viruses like the flu","Bacterial infections","Allergies"],a:1,e:"Antibiotics kill bacteria. They do not work on viruses."},
+{q:"A vaccine helps your body...",o:["Practice fighting a germ safely","Skip sleeping","Digest food"],a:0,e:"Vaccines train your immune system before the real germ shows up."},
+{q:"What is a \"dosage\"?",o:["A kind of illness","How much medicine to take and when","A doctor's room"],a:1,e:"Always follow the dosage on the label or from your pharmacist."},
+{q:"Feeling anxious often is...",o:["Something to hide","Common, and help is available","Never serious"],a:1,e:"Anxiety is common and treatable. Talking to someone is a strong first step."}]},
+es:{lbl:"Pregunta",ok:"¡Correcto!",no:"Casi.",next:"Siguiente",fin:"Terminar",done:"Lección completa",score:"Ganaste",again:"Jugar otra vez",
+Q:[
+{q:"¿Qué significa \"hipertensión\"?",o:["Azúcar baja en la sangre","Presión arterial alta","Latidos rápidos"],a:1,e:"Hiper significa demasiado. La hipertensión es presión arterial que se mantiene alta."},
+{q:"Los antibióticos se usan para tratar...",o:["Virus como la gripe","Infecciones bacterianas","Alergias"],a:1,e:"Los antibióticos matan bacterias. No funcionan contra virus."},
+{q:"Una vacuna ayuda a tu cuerpo a...",o:["Practicar cómo combatir un germen sin riesgo","Dormir menos","Digerir comida"],a:0,e:"Las vacunas entrenan tu sistema inmune antes de que llegue el germen real."},
+{q:"¿Qué es la \"dosis\"?",o:["Un tipo de enfermedad","Cuánta medicina tomar y cuándo","Un consultorio"],a:1,e:"Sigue siempre la dosis de la etiqueta o de tu farmacéutico."},
+{q:"Sentir ansiedad con frecuencia es...",o:["Algo que ocultar","Común, y hay ayuda disponible","Nunca grave"],a:1,e:"La ansiedad es común y tratable. Hablar con alguien es un buen primer paso."}]},
+zh:{lbl:"问题",ok:"答对了！",no:"差一点。",next:"下一题",fin:"完成",done:"课程完成",score:"你获得了",again:"再玩一次",
+Q:[
+{q:"“高血压”是什么意思？",o:["低血糖","血压持续偏高","心跳很快"],a:1,e:"高血压指血压长期过高。"},
+{q:"抗生素用来治疗…",o:["流感等病毒","细菌感染","过敏"],a:1,e:"抗生素杀灭细菌，对病毒无效。"},
+{q:"疫苗能帮助身体…",o:["安全地练习对抗病菌","少睡觉","消化食物"],a:0,e:"疫苗让免疫系统在真正的病菌到来前先训练。"},
+{q:"什么是“剂量”？",o:["一种疾病","吃多少药、什么时候吃","诊室"],a:1,e:"请始终按药品标签或药剂师的剂量服用。"},
+{q:"经常感到焦虑…",o:["应该隐藏","很常见，而且可以获得帮助","从不严重"],a:1,e:"焦虑很常见，也可以治疗。和人聊聊是很好的第一步。"}]}
+};
+const $=id=>document.getElementById(id);
+let i=0,xp=0,lang=localStorage.getItem('lang')||'en';
+try{}catch(e){}
+$('lang').value=lang;
+$('lang').onchange=e=>{lang=e.target.value;try{localStorage.setItem('lang',lang)}catch(_){}i=0;xp=0;render()};
+function render(){
+  const t=T[lang],c=$('card'),n=t.Q.length;
+  $('xp').textContent=xp;$('prog').style.width=(i/n*100)+'%';
+  document.documentElement.lang=lang==='zh'?'zh':lang;
+  if(i>=n){c.innerHTML=`<div class="done"><h3>${t.done} 🎉</h3><p>${t.score} ${xp} XP</p><button class="btn" id="again">${t.again}</button></div>`;$('again').onclick=()=>{i=0;xp=0;render()};return}
+  const q=t.Q[i];
+  c.innerHTML=`<div class="stat" style="color:var(--muted)">${t.lbl} ${i+1}/${n}</div><div class="q">${q.q}</div><div class="opts">${q.o.map((o,k)=>`<button class="opt" data-k="${k}">${o}</button>`).join('')}</div><div class="fb" id="fb"></div>`;
+  c.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.k));
+}
+function answer(k){
+  const t=T[lang],q=t.Q[i],good=k===q.a;
+  document.querySelectorAll('.opt').forEach((b,j)=>{b.disabled=true;if(j===q.a)b.classList.add('right');else if(j===k)b.classList.add('wrong')});
+  if(good){xp+=10;$('xp').textContent=xp}
+  const last=i===t.Q.length-1;
+  $('fb').innerHTML=`<b style="color:var(${good?'--ok':'--bad'})">${good?t.ok:t.no}</b>${q.e}<div style="margin-top:12px"><button class="btn" id="nx">${last?t.fin:t.next}</button></div>`;
+  $('nx').focus();$('nx').onclick=()=>{i++;render()};
+}
+render();
+
+const R={
+good:"Great. Keep it going: a short walk, water, and a message to someone you like are small habits that stick.",
+ok:"Okay is fine. Try naming one thing that would make today a bit better, then do just that.",
+low:"Low days happen. Rest, eat something, and tell one person. If it lasts more than two weeks, talk to a doctor or counselor.",
+anx:"Try this: breathe in for 4, hold for 4, out for 6, five times. Anxiety is common and treatable. A clinician can help if it keeps coming back.",
+lonely:"Loneliness and mental health affect each other. Reach out to one person today, even with a short text. Peer support can help too. If you feel unsafe, call or text 988."
+};
+document.querySelectorAll('#moods button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#moods button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $('reply').textContent=R[b.dataset.m];
+});
+</script>
+</body>
+</html>
