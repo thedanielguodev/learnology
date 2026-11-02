@@ -139,6 +139,33 @@ select{font:600 15px Figtree,sans-serif;padding:7px 10px;border-radius:10px;bord
  .match{gap:8px}
 }
 .topstats{display:none;justify-content:space-between;padding:4px 2px 14px}
+
+.land{overflow-x:hidden}
+.lh{display:flex;justify-content:space-between;align-items:center;max-width:1040px;margin:0 auto;padding:18px 20px}
+.btn.sm{padding:9px 16px;font-size:13px}
+.hero{max-width:1040px;margin:0 auto;padding:56px 20px 64px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800;letter-spacing:-2px}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero p{font-size:20px;color:var(--muted);max-width:28em;margin:20px 0 28px}
+.words{display:flex;flex-wrap:wrap;gap:10px}
+.words span{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 16px;font:600 22px Fraunces,serif}
+.words span small{display:block;font:500 13px Figtree,sans-serif;color:var(--muted)}
+.words span:nth-child(2n){transform:rotate(-2deg)}.words span:nth-child(3n){transform:rotate(2deg);background:var(--sun);color:#17332b;border-color:#17332b}.words span:nth-child(3n) small{color:#4b4220}
+.pts{max-width:1040px;margin:0 auto;padding:0 20px 64px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pts div{border-top:5px solid var(--coral);padding-top:10px}.pts b{font:800 28px Fraunces,serif;color:var(--coral)}.pts p{margin:2px 0 0;font-weight:600}
+.try{border-top:2px solid var(--line);padding:64px 20px;background:color-mix(in srgb,var(--sun) 12%,var(--bg))}
+.trywrap{max-width:640px;margin:0 auto}
+.trywrap h2{font-size:clamp(30px,4.6vw,46px);margin:10px 0 6px;letter-spacing:-.8px}
+.qcard{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:22px}
+.qcard h3{font-size:26px;margin:10px 0 16px}
+.qdots{display:flex;gap:8px;align-items:center}.qdots i{width:34px;height:10px;border-radius:5px;background:var(--line)}.qdots i.on{background:var(--green)}.qdots i.cur{background:var(--blue)}.qdots .stat{margin-left:auto}
+.qfb{margin-top:16px;border-radius:12px;padding:14px 16px}.qfb.ok{background:color-mix(in srgb,var(--ok) 16%,var(--card))}.qfb.bad{background:color-mix(in srgb,var(--bad) 14%,var(--card))}
+.qfb b{font:800 20px Fraunces,serif;margin-right:6px}
+.center2{text-align:center;padding:10px 0}.center2 h3{margin:6px 0}
+.join{background:var(--green);padding:64px 20px;display:flex;justify-content:center}
+.join .form{background:var(--card);border-radius:18px;padding:28px;max-width:420px}
+.lf{text-align:center;padding:24px;font-size:14px}.lf a{color:var(--muted)}
+@media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:24px}.pts{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -169,7 +196,7 @@ en:{tag:"Learn the <em>language</em> of your own health.",sub:"Free, game-style 
  p1:"Everything in Free",p2:"Unlimited hearts",p3:"Streak freeze: one missed day won't reset your streak",p4:"Supporter badge",
  s1:"Group accounts for classrooms",s2:"Progress reports for teachers",s3:"Translated materials for patients",
  coT:"Demo checkout",coS:"No card is charged. This only switches Plus on for this device.",coOk:"Start Plus",coNo:"Cancel",
- lang:"Language",signout:"Sign out",reset:"Reset progress",resetQ:"Erase all lessons, XP and streak?",lessonsDone:"Lessons done",total:"Total XP",plan:"Plan",member:"Member since",about:"About Learnology",tryBadge:"Free · no signup",saveH:"Nice! Save your progress",saveS:"waiting for you. Create a free profile to keep it and unlock the full path.",saveBtn:"Save my XP and continue",tryMiss:"Good try, now you know. Create a free profile to keep learning."},
+ lang:"Language",signout:"Sign out",reset:"Reset progress",resetQ:"Erase all lessons, XP and streak?",lessonsDone:"Lessons done",total:"Total XP",plan:"Plan",member:"Member since",about:"About Learnology",heroCta:"Try a 1-minute lesson",pt1:"Bite-size lessons, 2 minutes each",pt2:"English, Español and 中文",pt3:"Free to learn, with streaks and XP",tryH:"Try it before you sign up",tryS:"Three quick questions. Your XP carries over when you create a profile.",fin:"Finish",tryBadge:"Free · no signup",saveH:"Nice! Save your progress",saveS:"waiting for you. Create a free profile to keep it and unlock the full path.",saveBtn:"Save my XP and continue",tryMiss:"Good try, now you know. Create a free profile to keep learning."},
 es:{tag:"Aprende el <em>idioma</em> de tu propia salud.",sub:"Lecciones gratis en forma de juego sobre el cuerpo, las visitas al médico, los medicamentos y la salud mental.",
  signin:"Iniciar sesión",signup:"Crea tu perfil",name:"Nombre",email:"Correo",pw:"Contraseña",go:"Empezar",login:"Entrar",have:"¿Ya tienes cuenta?",none:"¿Eres nuevo?",
  fine:"Las cuentas se guardan solo en este dispositivo. No reutilices una contraseña de otro sitio.",errAll:"Completa todos los campos.",errPw:"La contraseña necesita 6 o más caracteres.",errBad:"Correo o contraseña incorrectos.",errTaken:"Ese correo ya tiene cuenta. Inicia sesión.",
@@ -183,7 +210,7 @@ es:{tag:"Aprende el <em>idioma</em> de tu propia salud.",sub:"Lecciones gratis e
  p1:"Todo lo de Gratis",p2:"Corazones ilimitados",p3:"Congelar racha: un día perdido no la reinicia",p4:"Insignia de apoyo",
  s1:"Cuentas grupales para aulas",s2:"Informes de progreso para docentes",s3:"Materiales traducidos para pacientes",
  coT:"Pago de demostración",coS:"No se cobra ninguna tarjeta. Solo activa Plus en este dispositivo.",coOk:"Empezar Plus",coNo:"Cancelar",
- lang:"Idioma",signout:"Cerrar sesión",reset:"Reiniciar progreso",resetQ:"¿Borrar lecciones, XP y racha?",lessonsDone:"Lecciones hechas",total:"XP total",plan:"Plan",member:"Miembro desde",about:"Acerca de Learnology",tryBadge:"Gratis · sin registro",saveH:"¡Bien! Guarda tu progreso",saveS:"te esperan. Crea un perfil gratis para conservarlos y desbloquear todo el camino.",saveBtn:"Guardar mi XP y continuar",tryMiss:"Buen intento, ahora ya lo sabes. Crea un perfil gratis para seguir aprendiendo."},
+ lang:"Idioma",signout:"Cerrar sesión",reset:"Reiniciar progreso",resetQ:"¿Borrar lecciones, XP y racha?",lessonsDone:"Lecciones hechas",total:"XP total",plan:"Plan",member:"Miembro desde",about:"Acerca de Learnology",heroCta:"Prueba una lección de 1 minuto",pt1:"Lecciones cortas de 2 minutos",pt2:"English, Español y 中文",pt3:"Gratis, con rachas y XP",tryH:"Pruébalo antes de registrarte",tryS:"Tres preguntas rápidas. Tu XP se conserva al crear tu perfil.",fin:"Terminar",tryBadge:"Gratis · sin registro",saveH:"¡Bien! Guarda tu progreso",saveS:"te esperan. Crea un perfil gratis para conservarlos y desbloquear todo el camino.",saveBtn:"Guardar mi XP y continuar",tryMiss:"Buen intento, ahora ya lo sabes. Crea un perfil gratis para seguir aprendiendo."},
 zh:{tag:"学会你自己<em>健康</em>的语言。",sub:"关于身体、看医生、药物和心理健康的免费游戏化小课程。",
  signin:"登录",signup:"创建你的资料",name:"姓名",email:"邮箱",pw:"密码",go:"开始",login:"登录",have:"已有账号？",none:"第一次来？",
  fine:"账号只保存在本设备上。请勿使用其他网站的密码。",errAll:"请填写所有内容。",errPw:"密码至少 6 个字符。",errBad:"邮箱或密码错误。",errTaken:"该邮箱已有账号，请登录。",
@@ -197,7 +224,7 @@ zh:{tag:"学会你自己<em>健康</em>的语言。",sub:"关于身体、看医�
  p1:"包含免费版全部内容",p2:"无限爱心",p3:"连续冻结：漏一天不会清零",p4:"支持者徽章",
  s1:"课堂团体账号",s2:"教师进度报告",s3:"为患者翻译的资料",
  coT:"演示结账",coS:"不会扣款。这只会在本设备上开启 Plus。",coOk:"开通 Plus",coNo:"取消",
- lang:"语言",signout:"退出登录",reset:"重置进度",resetQ:"清除所有课程、经验和连续记录？",lessonsDone:"已完成课程",total:"总经验",plan:"方案",member:"加入时间",about:"关于 Learnology",tryBadge:"免费 · 无需注册",saveH:"太棒了！保存你的进度",saveS:"正等着你。创建免费资料即可保留，并解锁完整学习路径。",saveBtn:"保存经验并继续",tryMiss:"不错的尝试，现在你知道了。创建免费资料继续学习。"}
+ lang:"语言",signout:"退出登录",reset:"重置进度",resetQ:"清除所有课程、经验和连续记录？",lessonsDone:"已完成课程",total:"总经验",plan:"方案",member:"加入时间",about:"关于 Learnology",heroCta:"试试 1 分钟小课",pt1:"每节 2 分钟的小课程",pt2:"English、Español 和中文",pt3:"免费学习，有连续记录和经验",tryH:"注册前先试试",tryS:"三个小问题。创建资料后经验会保留。",fin:"完成",tryBadge:"免费 · 无需注册",saveH:"太棒了！保存你的进度",saveS:"正等着你。创建免费资料即可保留，并解锁完整学习路径。",saveBtn:"保存经验并继续",tryMiss:"不错的尝试，现在你知道了。创建免费资料继续学习。"}
 };
 
 /* ---------- content ---------- */
@@ -310,61 +337,59 @@ function route(){
   renderLearn();
 }
 
-/* ---------- auth ---------- */
-let authMode='try',TEASE=null;
-function authLeft(U){return `<div class="auth-l"><a class="logo" href="/">Learn<b>ology</b></a>
-    <div><h1>${U.tag}</h1><p>${U.sub}</p><div class="chips" aria-hidden="true"><span>Hypertension</span><span>Vacuna</span><span>血压</span><span>Antibiotic</span></div></div>
-    <a href="about.html" style="color:#fff;opacity:.85;font-size:14px">${U.about}</a></div>`}
-function renderTry(){
-  const l=store.get('lg:lang',lang0),U=UI[l];document.documentElement.lang=l;
-  const d=UNITS[1].lessons[0][0][l],opts=d.slice(1,4),a=1;
-  app.innerHTML=`<div class="auth">${authLeft(U)}<div class="auth-r"><div class="form">
-   <div class="lang-pick"><select id="al" aria-label="${U.lang}"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></div>
-   <span class="plus">${U.tryBadge}</span><h2 style="margin:10px 0 18px;font-size:28px">${esc(d[0])}</h2>
-   <div class="opts" id="to">${opts.map((o,i)=>`<button class="opt" data-i="${i}"><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>
-   <div id="tf" style="margin-top:16px"></div>
-   <div class="swap">${U.have} <button id="sw">${U.login}</button></div></div></div></div>`;
-  $('#al').value=l;$('#al').onchange=e=>{store.set('lg:lang',e.target.value);renderTry()};
-  $('#sw').onclick=()=>{authMode='in';renderAuth()};
-  document.querySelectorAll('#to .opt').forEach(b=>b.onclick=()=>{
-    const i=+b.dataset.i,good=i===a;TEASE={xp:good?10:0};
-    document.querySelectorAll('#to .opt').forEach((x,j)=>{x.disabled=true;if(j===a)x.classList.add('right');else if(j===i)x.classList.add('wrong')});
-    $('#tf').innerHTML=`<p style="margin:0 0 12px"><b style="color:var(${good?'--ok':'--bad'})">${good?U.correct:U.wrong}</b> ${esc(d[4])}</p><p style="margin:0 0 12px;font-weight:700">${good?'⚡ +10 XP '+U.saveS:U.tryMiss}</p><button class="btn coral block" id="sv">${U.saveBtn}</button>`;
-    $('#sv').focus();$('#sv').onclick=()=>{authMode='up';renderAuth()};
-  });
-}
+/* ---------- landing + auth ---------- */
+let authMode='up',TEASE=null,QZ={i:0,xp:0,sel:null,done:false};
 function renderAuth(){
-  if(authMode==='try')return renderTry();
-  const l=store.get('lg:lang',lang0);
+  const l=store.get('lg:lang',lang0),U=UI[l];
   document.documentElement.lang=l;
-  const U=UI[l];
-  app.innerHTML=`<div class="auth">
-  ${authLeft(U)}
-  <div class="auth-r"><div class="form">
-    <div class="lang-pick"><select id="al" aria-label="${U.lang}"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select></div>
-    <h2>${authMode==='up'&&TEASE&&TEASE.xp?U.saveH:authMode==='up'?U.signup:U.signin}</h2>
-    <form id="af" novalidate>
-      ${authMode==='up'?`<label for="n">${U.name}</label><input id="n" autocomplete="name">`:''}
-      <label for="e">${U.email}</label><input id="e" type="email" autocomplete="email">
-      <label for="p">${U.pw}</label><input id="p" type="password" autocomplete="${authMode==='up'?'new-password':'current-password'}">
-      <div class="err" id="er" role="alert"></div>
-      <button class="btn block" type="submit">${authMode==='up'?U.go:U.login}</button>
-    </form>
-    <div class="swap">${authMode==='up'?U.have:U.none} <button id="sw">${authMode==='up'?U.signin:U.signup}</button></div>
-    <p class="fine">${U.fine}</p>
-  </div></div></div>`;
+  const words=l==='en'?[["Hypertension","high blood pressure"],["Antibiotic","kills bacteria"],["血压","blood pressure"],["Anxiety","ansiedad · 焦虑"],["Vaccine","vacuna · 疫苗"]]:l==='es'?[["Hipertensión","presión arterial alta"],["Antibiótico","mata bacterias"],["血压","presión arterial"],["Ansiedad","anxiety · 焦虑"],["Vacuna","vaccine · 疫苗"]]:[["高血压","hypertension"],["抗生素","antibiotic"],["疫苗","vaccine · vacuna"],["焦虑","anxiety · ansiedad"],["剂量","dosage"]];
+  app.innerHTML=`<div class="land">
+  <header class="lh"><a class="logo" href="/">Learn<b>ology</b></a><div style="display:flex;gap:10px;align-items:center"><select id="al" aria-label="${U.lang}"><option value="en">English</option><option value="es">Español</option><option value="zh">中文</option></select><button class="btn ghost sm" id="hin">${U.login}</button></div></header>
+  <section class="hero"><div><h1>${U.tag}</h1><p>${U.sub}</p>
+    <button class="btn" id="htry">${U.heroCta}</button></div>
+    <div class="words" aria-hidden="true">${words.map(w=>`<span>${w[0]}<small>${w[1]}</small></span>`).join('')}</div></section>
+  <section class="pts">${[U.pt1,U.pt2,U.pt3].map((p,i)=>`<div><b>${i+1}</b><p>${p}</p></div>`).join('')}</section>
+  <section class="try" id="try"><div class="trywrap"><span class="plus">${U.tryBadge}</span><h2>${U.tryH}</h2><p class="sub">${U.tryS}</p><div class="qcard" id="qz" aria-live="polite"></div></div></section>
+  <section class="join" id="join"><div class="form"><div id="fm"></div></div></section>
+  <footer class="lf"><a href="about.html">${U.about}</a></footer></div>`;
   $('#al').value=l;
-  $('#al').onchange=e=>{store.set('lg:lang',e.target.value);renderAuth()};
-  $('#sw').onclick=()=>{authMode=authMode==='up'?'in':'up';renderAuth()};
+  $('#al').onchange=e=>{store.set('lg:lang',e.target.value);QZ={i:0,xp:0,sel:null,done:false};renderAuth()};
+  $('#htry').onclick=()=>$('#try').scrollIntoView({behavior:'smooth'});
+  $('#hin').onclick=()=>{authMode='in';drawForm();$('#join').scrollIntoView({behavior:'smooth'})};
+  drawQuiz();drawForm();
+}
+function drawQuiz(){
+  const l=store.get('lg:lang',lang0),U=UI[l],qs=UNITS[1].lessons[0],box=$('#qz');
+  if(QZ.done){
+    TEASE={xp:QZ.xp};
+    box.innerHTML=`<div class="center2"><div style="font-size:48px">🎉</div><h3>${U.done}</h3><div class="big"><div><b>⚡ ${QZ.xp}</b><small>${U.xp}</small></div></div><button class="btn coral" id="go">${U.saveBtn}</button></div>`;
+    $('#go').onclick=()=>{authMode='up';drawForm();$('#join').scrollIntoView({behavior:'smooth'})};return;
+  }
+  const d=qs[QZ.i][l],opts=d.slice(1,4),a=qs[QZ.i].a,shown=QZ.sel!=null;
+  box.innerHTML=`<div class="qdots">${qs.map((_,i)=>`<i class="${i<QZ.i?'on':i===QZ.i?'cur':''}"></i>`).join('')}<span class="stat x">⚡ ${QZ.xp}</span></div>
+   <h3>${esc(d[0])}</h3><div class="opts">${opts.map((o,i)=>`<button class="opt ${shown?(i===a?'right':i===QZ.sel?'wrong':''):''}" data-i="${i}" ${shown?'disabled':''}><kbd>${i+1}</kbd>${esc(o)}</button>`).join('')}</div>
+   ${shown?`<div class="qfb ${QZ.sel===a?'ok':'bad'}"><b>${QZ.sel===a?U.correct:U.wrong}</b> ${esc(d[4])}<div style="margin-top:12px"><button class="btn" id="qn">${QZ.i===qs.length-1?U.fin:U.next}</button></div></div>`:''}`;
+  box.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;QZ.sel=i;if(i===a)QZ.xp+=10;drawQuiz()});
+  const n=$('#qn');if(n)n.onclick=()=>{QZ.sel=null;QZ.i++;if(QZ.i>=qs.length)QZ.done=true;drawQuiz()};
+}
+function drawForm(){
+  const l=store.get('lg:lang',lang0),U=UI[l],up=authMode==='up',fm=$('#fm');
+  fm.innerHTML=`<h2>${up&&TEASE&&TEASE.xp?U.saveH:up?U.signup:U.signin}</h2>${up&&TEASE&&TEASE.xp?`<p class="sub" style="margin:-8px 0 8px">⚡ +${TEASE.xp} XP ${U.saveS}</p>`:''}
+   <form id="af" novalidate>${up?`<label for="n">${U.name}</label><input id="n" autocomplete="name">`:''}
+   <label for="e">${U.email}</label><input id="e" type="email" autocomplete="email">
+   <label for="p">${U.pw}</label><input id="p" type="password" autocomplete="${up?'new-password':'current-password'}">
+   <div class="err" id="er" role="alert"></div><button class="btn block" type="submit">${up?U.go:U.login}</button></form>
+   <div class="swap">${up?U.have:U.none} <button id="sw">${up?U.signin:U.signup}</button></div><p class="fine">${U.fine}</p>`;
+  $('#sw').onclick=()=>{authMode=up?'in':'up';drawForm()};
   $('#af').onsubmit=async ev=>{
     ev.preventDefault();
     const email=$('#e').value.trim().toLowerCase(),pw=$('#p').value,name=$('#n')?$('#n').value.trim():'';
     const er=m=>$('#er').textContent=m;
-    if(!email||!pw||(authMode==='up'&&!name))return er(U.errAll);
-    if(pw.length<6&&authMode==='up')return er(U.errPw);
+    if(!email||!pw||(up&&!name))return er(U.errAll);
+    if(pw.length<6&&up)return er(U.errPw);
     const acc=store.get('lg:accounts',{});
     const h=await hash(pw,email);
-    if(authMode==='up'){
+    if(up){
       if(acc[email])return er(U.errTaken);
       acc[email]=h;store.set('lg:accounts',acc);
       store.set('lg:p:'+email,{name,lang:l,xp:TEASE?TEASE.xp:0,streak:0,last:'',done:{},plan:'free',joined:day()});
